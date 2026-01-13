@@ -11,7 +11,7 @@
             --neon-pink: #ff007a;
             --neon-green: #39ff14;
             --neon-purple: #bc13fe;
-            --glass-bg: rgba(15, 15, 20, 0.9);
+            --glass-bg: rgba(15, 15, 20, 0.95);
             --glass-border: rgba(255, 255, 255, 0.15);
             --text-gray: #b0b8c4;
             --bg-dark: #050505;
@@ -21,12 +21,10 @@
             margin: 0; padding: 0;
             font-family: 'Pretendard', sans-serif;
             background-color: var(--bg-dark);
-            
-            /* [수정됨] 보내주신 파일명 bg.jpg 로 변경했습니다 */
+            /* 배경 이미지 설정 */
             background-image: 
                 linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%),
                 url('bg.jpg'); 
-                
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -39,18 +37,11 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #111; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--neon-blue); }
-
-        /* [타이포그래피] */
-        .racing-font { font-style: italic; letter-spacing: -0.5px; }
-        .text-blue { color: var(--neon-blue); text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
-        .text-pink { color: var(--neon-pink); text-shadow: 0 0 10px rgba(255, 0, 122, 0.5); }
-        .text-green { color: var(--neon-green); text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
 
         /* [상단 내비게이션] */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 60px;
-            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
             overflow-x: auto;
@@ -58,22 +49,20 @@
         }
         .nav-inner {
             display: flex; justify-content: center; align-items: center;
-            height: 100%; min-width: 500px;
-            margin: 0 auto;
+            height: 100%; min-width: 500px; margin: 0 auto;
         }
         .nav-btn {
             background: none; border: none; color: #888;
             font-size: 14px; font-weight: 700; cursor: pointer;
             padding: 0 15px; transition: 0.3s; height: 100%;
         }
-        .nav-btn.active { color: var(--neon-blue); border-bottom: 2px solid var(--neon-blue); background: rgba(0, 242, 255, 0.05); }
-        .nav-btn:hover { color: white; }
+        .nav-btn.active { color: var(--neon-blue); border-bottom: 2px solid var(--neon-blue); background: rgba(0, 242, 255, 0.1); }
 
         /* [메인 컨테이너] */
         .container {
             width: 100%; max-width: 600px; margin: 80px auto 0; padding: 20px;
             box-sizing: border-box; display: none;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.4s ease;
         }
         .container.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -91,54 +80,40 @@
             content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
             background: var(--neon-blue);
         }
-        .card-title { font-size: 18px; font-weight: 800; margin-bottom: 15px; color: white; display: flex; align-items: center; gap: 8px; }
+        .card-title { font-size: 18px; font-weight: 800; margin-bottom: 15px; color: white; }
         .sub-text { font-size: 13px; color: #aaa; line-height: 1.6; }
 
-        /* [RTM 소개] */
-        .profile-list { list-style: none; padding: 0; margin: 0; font-size: 14px; color: #ddd; line-height: 1.8; }
-        .profile-list li::before { content: '✔'; color: var(--neon-blue); margin-right: 8px; }
-
-        /* [커리큘럼 타임라인] */
-        .track-badge {
-            display: inline-block; padding: 4px 8px; border-radius: 4px;
-            font-size: 11px; font-weight: 800; margin-bottom: 5px; color: black;
-        }
+        /* [커리큘럼 & 수업] */
         .curri-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .curri-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        
-        /* [진행중인 수업] */
-        .class-tag { font-size: 11px; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; margin-left: 5px; color: #bbb; }
-        .progress-box { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; margin-top: 10px; font-size: 13px; }
-        .progress-date { font-size: 11px; color: var(--neon-pink); font-weight: bold; margin-bottom: 4px; display: block; }
+        .curri-item:last-child { border-bottom: none; }
+        .track-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 800; margin-bottom: 5px; color: black; background: var(--neon-blue); }
+        .progress-box { background: rgba(0,0,0,0.5); padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 13px; border: 1px solid #333; }
+        .progress-date { color: var(--neon-pink); font-weight: bold; margin-bottom: 5px; display: block; font-size: 11px; }
 
         /* [리포트] */
         .login-input {
-            width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid #444;
+            width: 100%; padding: 12px; background: #222; border: 1px solid #444;
             color: white; border-radius: 6px; margin-bottom: 8px; box-sizing: border-box;
         }
-
-        /* [옵션 배경 검은색 처리] */
-        .login-input option, 
-        .login-input optgroup {
-            background-color: #111; /* 배경을 어둡게 */
-            color: white;           /* 글씨를 밝게 */
-        }
+        /* 드롭다운 옵션 색상 수정 */
+        .login-input option, .login-input optgroup { background-color: #111; color: white; }
 
         .btn-action {
             width: 100%; padding: 14px; border: none; border-radius: 6px;
             background: linear-gradient(90deg, var(--neon-blue), #0077ff);
-            color: white; font-weight: 800; font-size: 15px; cursor: pointer;
-            margin-top: 10px;
+            color: white; font-weight: 800; font-size: 15px; cursor: pointer; margin-top: 10px;
         }
-
-        /* 리포트 결과 테이블 스타일 */
+        
         .report-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
-        .report-table th { text-align: left; color: #888; padding: 8px 0; width: 80px; vertical-align: top; }
-        .report-table td { padding: 8px 0; color: white; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .score-box { display: inline-block; padding: 4px 10px; background: var(--neon-pink); color: white; font-weight: bold; border-radius: 20px; font-size: 12px; }
+        .report-table th { text-align: left; color: #888; padding: 10px 0; width: 70px; vertical-align: top; border-bottom: 1px solid #333; }
+        .report-table td { padding: 10px 0; color: white; border-bottom: 1px solid #333; line-height: 1.5; }
+        .score-box { display: inline-block; padding: 4px 10px; background: var(--neon-pink); color: white; font-weight: bold; border-radius: 4px; font-size: 12px; }
 
-        /* 푸터 */
-        footer { text-align: center; color: #666; font-size: 12px; padding: 20px; }
+        footer { text-align: center; color: #666; font-size: 12px; padding: 30px; }
+        
+        /* 텍스트 하이라이트 */
+        .hl-blue { color: var(--neon-blue); font-weight: bold; }
+        .hl-pink { color: var(--neon-pink); font-weight: bold; }
     </style>
 </head>
 <body>
@@ -157,7 +132,7 @@
     <div style="text-align:center; margin-bottom:30px;">
         <img src="2-1.png" alt="RTM Logo" style="width:140px; margin-bottom:15px; filter:drop-shadow(0 0 10px var(--neon-blue));">
         <h1 style="font-size:28px; line-height:1.2; margin:0; font-style:italic;">
-            <span class="text-blue">RACE</span> TO <span class="text-pink">MIRACLE</span>
+            <span style="color:var(--neon-blue)">RACE</span> TO <span style="color:var(--neon-pink)">MIRACLE</span>
         </h1>
         <p style="color:#aaa; font-size:14px; margin-top:10px;">
             "수학의 깊이와 재미, 그 불가능한 공존을 증명합니다."
@@ -166,7 +141,7 @@
 
     <div class="glass-card">
         <div class="card-title">👨‍🏫 박원욱 T</div>
-        <ul class="profile-list">
+        <ul style="padding-left:20px; font-size:14px; color:#ddd; line-height:1.8; margin:0;">
             <li>인하대학교 수학교육과 졸업</li>
             <li>연세대학교 대학원 수학교육과 과정</li>
             <li>前) 대치명인학원 검단캠퍼스</li>
@@ -202,7 +177,7 @@
         <div class="card-title">🌱 선행 수업 (Foundation)</div>
         <div class="curri-item">
             <span class="track-badge" style="background:var(--neon-green);">GRIP</span>
-            <div style="color:white; font-weight:bold;">공통수학1, 2 / 대수 / 미적분1</div>
+            <div style="font-weight:bold;">공통수학1, 2 / 대수 / 미적분1</div>
             <div class="sub-text">본 학기 학습을 위한 기본 개념 가볍게 완성</div>
         </div>
     </div>
@@ -210,19 +185,19 @@
     <div class="glass-card" style="border-left-color: var(--neon-blue);">
         <div class="card-title">🏫 내신 수업 (School Exam)</div>
         <div class="curri-item">
-            <span style="color:var(--neon-blue); font-weight:bold;">1. GEAR UP (방학)</span>
+            <b class="hl-blue">1. GEAR UP (방학)</b>
             <div class="sub-text">기본 개념 + 발전 개념서 (과제: 수매씽)</div>
         </div>
         <div class="curri-item">
-            <span style="color:var(--neon-blue); font-weight:bold;">2. 수고스러움 (D-60~21)</span>
+            <b class="hl-blue">2. 수고스러움 (D-60~21)</b>
             <div class="sub-text">시험 2달 전 시작, 고난도 문제 분석</div>
         </div>
         <div class="curri-item">
-            <span style="color:var(--neon-blue); font-weight:bold;">3. 마부작침 (D-60~21)</span>
+            <b class="hl-blue">3. 마부작침 (D-60~21)</b>
             <div class="sub-text">모의고사 4점 문항 집중 분석</div>
         </div>
         <div class="curri-item">
-            <span style="color:var(--neon-blue); font-weight:bold;">4. 학교 톺아보기 (D-21~1)</span>
+            <b class="hl-blue">4. 학교 톺아보기 (D-21~1)</b>
             <div class="sub-text">학교별 기출 및 내신 스타일 완벽 분석</div>
         </div>
     </div>
@@ -230,20 +205,20 @@
     <div class="glass-card" style="border-left-color: var(--neon-pink);">
         <div class="card-title">🚀 수능 수업 (CSAT)</div>
         <div class="curri-item">
-            <div style="font-weight:bold;">Step 1. ENGINE (겨울방학)</div>
-            <div class="sub-text">기본개념 + 최근 3개년 기출 (3점~쉬운4점) / 과제: ENGINE OIL</div>
+            <b>Step 1. ENGINE (겨울방학)</b>
+            <div class="sub-text">기본개념 + 3개년 기출 (3점~쉬운4점) / 과제: ENGINE OIL</div>
         </div>
         <div class="curri-item">
-            <div style="font-weight:bold;">Step 2. ADVANCING (3월~7월)</div>
+            <b>Step 2. ADVANCING (3~7월)</b>
             <div class="sub-text">실전개념 + 수특 + KICE WORKBOOK (4점~준킬러)</div>
         </div>
         <div class="curri-item">
-            <div style="font-weight:bold;">Step 3. 수박N (7월~10월)</div>
-            <div class="sub-text">자작문항 N제 + 수능완성 + 킬러기출 (시대인재 서바이벌 병행)</div>
+            <b>Step 3. 수박N (7~10월)</b>
+            <div class="sub-text">자작문항 N제 + 수능완성 + 킬러기출 (시대인재 서바이벌)</div>
         </div>
         <div class="curri-item">
-            <div style="font-weight:bold;">Step 4. GRAND FINAL (10월~수능)</div>
-            <div class="sub-text">자작문항 실전 모의고사 10회 (시대인재 서바이벌 병행)</div>
+            <b>Step 4. GRAND FINAL (10월~)</b>
+            <div class="sub-text">자작문항 실전 모의고사 10회 (시대인재 서바이벌)</div>
         </div>
     </div>
 
@@ -285,7 +260,7 @@
     <p style="text-align:center; font-size:12px; color:#888; margin-bottom:20px;">* 2026. 01. 13. 기준 진도 현황</p>
 
     <div class="glass-card">
-        <div class="card-title">1. 예비중2 CORE CLASS <span class="class-tag">진행중</span></div>
+        <div class="card-title">1. 예비중2 CORE CLASS</div>
         <div class="sub-text">
             • 월수금 (17-20시): 2학기 과정<br>
             • 화목토 (17-20시): 1학기 과정
@@ -298,7 +273,7 @@
     </div>
 
     <div class="glass-card">
-        <div class="card-title">2. 예비고1 EXCEED LINE <span class="class-tag">상위권</span></div>
+        <div class="card-title">2. 예비고1 EXCEED LINE</div>
         <div class="sub-text">
             • 월수 (10-13시): 공통수학1<br>
             • 월수 (14-17시): 공통수학2<br>
@@ -312,7 +287,7 @@
     </div>
 
     <div class="glass-card">
-        <div class="card-title">3. 예비고1 GEAR LINE <span class="class-tag">개념완성</span></div>
+        <div class="card-title">3. 예비고1 GEAR LINE</div>
         <div class="sub-text">
             • 화목 (10-13시): 공통수학1<br>
             • 월수 (14-17시): 공통수학2<br>
@@ -326,14 +301,12 @@
     </div>
 
     <div class="glass-card">
-        <div class="card-title">4. 기하 정규반 <span class="class-tag">예비고2</span></div>
-        <div class="sub-text">
-            • 매주 금요일 10시 ~ 13시
-        </div>
+        <div class="card-title">4. 기하 정규반 (예비고2)</div>
+        <div class="sub-text">• 매주 금요일 10시 ~ 13시</div>
     </div>
 
     <div class="glass-card" style="border-left-color: #555;">
-        <div class="card-title">5. 수능수학 1등급 목표반 <span class="class-tag">개강예정</span></div>
+        <div class="card-title">5. 수능수학 1등급 목표반</div>
         <div class="sub-text">
             • 매주 금요일 14시 ~ 17시 30분<br>
             • 대상: 1등급/만점 목표 학생
@@ -341,7 +314,7 @@
     </div>
 
     <div class="glass-card" style="border-left-color: #555;">
-        <div class="card-title">6. 수리논술 정규반 <span class="class-tag">개강예정</span></div>
+        <div class="card-title">6. 수리논술 정규반</div>
         <div class="sub-text">
             • 매주 토요일 19시 ~ 22시 30분<br>
             • 대상: 논술 전형 희망자
@@ -377,20 +350,6 @@
                 <option value="권아영">권아영</option>
                 <option value="김유진">김유진</option>
             </optgroup>
-            <optgroup label="[예비고2]">
-                <option value="김래인">김래인</option>
-                <option value="민채이">민채이</option>
-                <option value="박현우">박현우</option>
-                <option value="백서정">백서정</option>
-                <option value="원하율">원하율</option>
-                <option value="이준성">이준성</option>
-                <option value="이동기">이동기</option>
-                <option value="이윤성">이윤성</option>
-                <option value="장하람">장하람</option>
-                <option value="정윤찬">정윤찬</option>
-                <option value="정지훈">정지훈</option>
-                <option value="진하윤">진하윤</option>
-            </optgroup>
         </select>
         
         <input type="password" id="pwInput" class="login-input" placeholder="비밀번호 (4자리)">
@@ -401,52 +360,20 @@
         <div style="border-bottom:1px solid #444; padding-bottom:10px; margin-bottom:15px; display:flex; justify-content:space-between; align-items:end;">
             <div>
                 <span style="font-size:12px; color:var(--neon-pink);">주간 학습 보고서</span><br>
-                <span style="font-size:20px; font-weight:bold;" id="rName">학생이름</span>
+                <span style="font-size:22px; font-weight:bold;" id="rName">학생이름</span>
             </div>
-            <div style="font-size:12px; color:#888;">담당: 박원욱T</div>
+            <div style="font-size:12px; color:#888;">
+                기준일: <span id="rDate">2026.01.20</span><br>
+                담당: 박원욱T
+            </div>
         </div>
 
-        <table class="report-table">
-            <tr>
-                <th>① 출결</th>
-                <td>
-                    수업일: 1월 13일 (화)<br>
-                    <span style="color:var(--neon-green);">정상 출석</span>
-                </td>
-            </tr>
-            <tr>
-                <th>② 태도</th>
-                <td>수업 집중도가 매우 높으며 질문이 활발함.</td>
-            </tr>
-            <tr>
-                <th>③ 진도</th>
-                <td>
-                    단원: 다항식의 연산 / 평면좌표<br>
-                    이해도: <span style="color:var(--neon-blue); font-weight:bold;">상 (High)</span>
-                </td>
-            </tr>
-            <tr>
-                <th>④ 숙제</th>
-                <td>
-                    수행률: <b style="color:var(--neon-pink);">100%</b><br>
-                    <span style="font-size:12px; color:#aaa;">오답노트 정리까지 완벽하게 수행함.</span>
-                </td>
-            </tr>
-            <tr>
-                <th>⑤ 테스트</th>
-                <td>
-                    주간 테스트 (1/12)<br>
-                    점수: <span class="score-box">92점</span><br>
-                    <span style="font-size:12px;">반 평균 대비 +8점 상회</span>
-                </td>
-            </tr>
-        </table>
+        <div id="report-content"></div>
 
         <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px; margin-top:20px;">
-            <div style="font-size:13px; font-weight:bold; color:var(--neon-blue); margin-bottom:5px;">⑥ 담임 종합 코멘트</div>
-            <p style="font-size:13px; line-height:1.6; margin:0;" id="rComment">
-                이번 주 학습 태도가 매우 훌륭합니다. 특히 취약했던 계산 실수 부분이 많이 교정되었습니다. 
-                다음 주 진행될 심화 파트에서도 이 흐름을 유지한다면 확실한 등급 상승이 기대됩니다.
+            <div style="font-size:13px; font-weight:bold; color:var(--neon-blue); margin-bottom:10px;">⑥ 담임 종합 코멘트</div>
+            <p style="font-size:13px; line-height:1.6; margin:0; white-space: pre-wrap;" id="rComment">
+                코멘트가 여기에 표시됩니다.
             </p>
         </div>
 
@@ -472,32 +399,234 @@
         window.scrollTo(0, 0);
     }
 
-    // 학생 DB (이름: 비밀번호)
+    // [학생 데이터베이스] (2026. 1. 13. 업데이트)
     const studentDB = {
-        // 예비중2
-        "강규온": "0585", "김강인": "0989", "김윤호": "4281", "배태랑": "3522",
-        "오세홍": "8026", "이예찬": "8631", "이채훈": "9678", "공태현": "9517", "정진우": "0383",
-        // 예비고1
-        "김가연": "2058", "송시후": "6147", "이길준": "5647", "제유진": "1553",
-        "권아영": "3385", "김유진": "8388",
-        // 예비고2
-        "김래인": "4130", "민채이": "9102", "박현우": "3461", "백서정": "4373",
-        "원하율": "9520", "이준성": "0281", "이동기": "2921", "이윤성": "2722",
-        "장하람": "8285", "정윤찬": "2171", "정지훈": "3078", "진하윤": "4934"
+        "강규온": {
+            "pw": "0585",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "보통",
+            "progTitle": "2-1 : 일차부등식 들어갈 차례 / 2-2 : 직각삼각형의 닮음",
+            "progLevel": "상",
+            "hwRate": "0%",
+            "hwCmt": "거의 안합니다...",
+            "testScore": "15/30",
+            "testAnal": "분석 내용",
+            "mainCmt": "강규온 학생은 2-1 식의 계산 과정에서 계산 실수가 조금 잦습니다. 그러나 아이에게 아직 배우려는 태도가 없는 것이 좀 아쉽습니다. 조금 더 기다려주면 믿음에 부응해줄거라 생각합니다. \n\n계산 실수가 잦은 이유는 과제를 하지 않는 것이 문제입니다. 저도 입에 닳도록 과제를 해 오라고 하는 중이고, 같은 반 친구들은 다 과제를 해 오는데 본인만 안해오면 다른 아이들이 규온이만 혜택을 받는다고 생각할 수도 있습니다.  \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다. "
+        },
+        "김강인": {
+            "pw": "0989",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "좋음",
+            "progTitle": "2-1 : 일차부등식 들어갈 차례 / 2-2 : 직각삼각형의 닮음",
+            "progLevel": "중상",
+            "hwRate": "70%",
+            "hwCmt": "양은 전부 채웠지만 이해가 안 되는 부분이 더러 있었음.",
+            "testScore": "23/30",
+            "testAnal": "전반적으로 이해력은 좋음. 고급 계산력 요망.",
+            "mainCmt": "김강인 학생은 2-1 식의 계산 과정에서 복잡한 계산을 어려워합니다. 그러나 아이가 지식을 흡수하려는 태도가 아주 좋습니다. 계속 할 수 있다고 하면 알아서 잘 따라오더라고요. 그것이 지난 학기때 85점에서 95점으로 오른 이유이기도 합니다.\n\n과제를 아주 잘 이행하고 있습니다만, 어려워 하는 부분들이 있어서 그것을 집중적으로 공략해주면 거의 대부분의 문제를 본인의 힘으로 풀어낼 힘이 생길 것입니다.\n\n다만, 우려스러운 부분은 또래집단에서 게임을 좀 진심으로 한다는 점인데, 보통 팀 대전게임이 주를 이룹니다. 그래서 본인의 팀이 지게 되면 패배의 원흉이 된 친구들을 비난하는 것이 있는데, 이는 성격형성에 지대한 영향을 끼칩니다. 교육하실때, 너무 다그치지는 마시고 혹시 그런일이 있었냐면서 그러지 마라. 정도로 말려주십쇼.  \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다. "
+        },
+        "김윤호": {
+            "pw": "4281",
+            "date": "2026. 01. 13. (화)",
+            "att": "결석 2 : 여행1, 병결1",
+            "attd": "좋음",
+            "progTitle": "2-1 : 일차부등식 들어갈 차례 / 2-2 : 직각삼각형의 닮음",
+            "progLevel": "상",
+            "hwRate": "70%",
+            "hwCmt": "결석률이 좀 있어서 양을 채워야 합니다.",
+            "testScore": "17/30",
+            "testAnal": "원래 잘 하는 친구인데 학습기간에 절단이 있어서 부족함을 채워야 함.",
+            "mainCmt": "김윤호 학생은 2-1 식의 계산 과정에서 복잡한 계산을 어려워합니다. 그러나 아이가 지식을 흡수하려는 태도가 아주 좋습니다. 계속 할 수 있다고 하면 알아서 잘 따라오더라고요. 그것이 지난 학기때 83점에서 92점으로 오른 이유이기도 합니다.\n\n과제를 아주 잘 이행하고 있습니다만, 학습 기간에 단절이 있어서 어려워 하는 부분들이 있을 겁니다. 그것을 집중적으로 공략해주면 거의 대부분의 문제를 본인의 힘으로 풀어낼 힘이 생길 것입니다.\n\n다만, 우려스러운 부분은 또래집단에서 게임을 좀 진심으로 한다는 점인데, 보통 팀 대전게임이 주를 이룹니다. 그래서 본인의 팀이 지게 되면 패배의 원흉이 된 친구들을 비난하는 것이 있는데, 이는 성격형성에 지대한 영향을 끼칩니다. 교육하실때, 너무 다그치지는 마시고 혹시 그런일이 있었냐면서 그러지 마라. 정도로 말려주십쇼.  \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다."
+        },
+        "배태랑": {
+            "pw": "3522",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "매우 좋음",
+            "progTitle": "2-1 : 일차부등식 들어갈 차례 / 2-2 : 직각삼각형의 닮음",
+            "progLevel": "중~상",
+            "hwRate": "40%",
+            "hwCmt": "요새 안 하기 시작함",
+            "testScore": "13/30",
+            "testAnal": "테스트 때만 조금 대충 하는 경향이 있습니다",
+            "mainCmt": "배태랑 학생은 2-1 식의 계산 과정에서 복잡한 계산을 어려워합니다. 그러나 아이가 지식을 흡수하려는 태도가 아주 좋습니다. 계속 할 수 있다고 하면 알아서 잘 따라오더라고요. 그것이 지난 학기때 80점대에서 96점으로 오른 이유이기도 합니다.\n\n아이가 숙제를 안 하고 오는 경우가 잦은데, 거짓말로 대강 상황을 무마시키고 웃으면서 넘어갑니다. 기말고사가 끝나고 조금 기강이 해이해진 면이 있습니다. 그렇다고 너무 기강을 잡으면 아이가 하기 싫어질 수도 있어서 강약 조절을 하면서 넘어갑니다. 요새는 남겨서 시키는 편입니다. \n\n또한, 우려스러운 부분은 또래집단에서 게임을 좀 진심으로 한다는 점인데, 보통 팀 대전게임이 주를 이룹니다. 그래서 본인의 팀이 지게 되면 패배의 원흉이 된 친구들을 비난하는 것이 있는데, 이는 성격형성에 지대한 영향을 끼칩니다. 교육하실때, 너무 다그치지는 마시고 혹시 그런일이 있었냐면서 그러지 마라. 정도로 말려주십쇼.  \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다."
+        },
+        "오세홍": {
+            "pw": "8026",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "좋음",
+            "progTitle": "2-1 : 일차부등식 들어갈 차례 / 2-2 : 직각삼각형의 닮음",
+            "progLevel": "중~상",
+            "hwRate": "80%",
+            "hwCmt": "양은 전부 채웠으나, 부족한 부분이 더러 있음.",
+            "testScore": "24/30",
+            "testAnal": "수업 이해도가 좋아서 시험도 잘 봄.",
+            "mainCmt": "오세홍 학생은 2-1 식의 계산 과정에서 복잡한 계산을 어려워합니다. 그러나 아이가 지식을 흡수하려는 태도가 아주 좋습니다. 계속 할 수 있다고 하면 알아서 잘 따라오더라고요. \n\n숙제같은 경우 전부 이행하고 있습니다. 다만, 어려워하는 부분이 있어서 그것에 대한 질문은 보통 남겨서 질문 전부 받아주고 이해를 시킵니다. 세홍이의 우려점은 글을 조금 대충 읽는다는 점입니다. 이건 학생이 글자를 못 읽는 게 아니라(문맹), 글자를 '정보'로 인식하지 않는(기능적 문맹) 상태라서 그렇습니다. \n\n예를 들면, 요즘 학생들은 태어날 때부터 디지털 네이티브입니다. 앱 깔 때, 게임 할 때 나오는 안내 문구 다 읽나요? 아니요, 그냥 [확인] 버튼 위치만 찾아서 누릅니다. 수학 문제도 똑같이 대합니다. \"문제 풀이 = [확인] 버튼 누르기\". 세홍이에게는 지문(Instruction)은 귀찮은 팝업창일 뿐이고, 빨리 답만 내면 된다고 생각합니다. 이 습관이 종이 시험지에도 그대로 묻어 나오는 겁니다.\n\n또한, 우려스러운 부분은 또래집단에서 게임을 좀 진심으로 한다는 점인데, 보통 팀 대전게임이 주를 이룹니다. 그래서 본인의 팀이 지게 되면 패배의 원흉이 된 친구들을 비난하는 것이 있는데, 이는 성격형성에 지대한 영향을 끼칩니다. 교육하실때, 너무 다그치지는 마시고 혹시 그런일이 있었냐면서 그러지 마라. 정도로 말려주십쇼.  \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다."
+        },
+        "이예찬": {
+            "pw": "8631",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "매우 좋음",
+            "progTitle": "2-1 : 일차부등식 들어갈 차례",
+            "progLevel": "상",
+            "hwRate": "100%",
+            "hwCmt": "완벽함",
+            "testScore": "이번 주 응시하지 않음.",
+            "testAnal": "-",
+            "mainCmt": "이예찬 학생은 2-1 과정을 아주 잘 이해하고 있습니다. 글씨도 아주 잘 쓰고, 무엇보다 아이가 지식을 흡수하려는 태도가 아주 좋습니다. 계속 할 수 있다고 하면 알아서 잘 따라오더라고요. \n\n숙제같은 경우 전부 이행하고 있습니다. 다만, 어려워하는 부분이 있어서 그것에 대한 질문은 보통 따로 질문 전부 받아주고 이해를 시킵니다. 반에서 숙제 완성도가 1등입니다. \n\n그러나, 우려스러운 부분은 또래집단과 있을 때 본인이 같이 어울리고 싶어하는 점이 있어서 사담이 시작되는 순간 끼어드는 경향이 있는데 이는 문제가 되지 않습니다. 날이 조금 서 있습니다. 제가 매번 통제는 하지만 남자아이라 지는 것 자체를 싫어해서 감정적으로 격해질 때가 가끔 있고, 기본적으로 입이 쉬지 않습니다. 주의를 좀 주시면 좋겠습니다. \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다."
+        },
+        "이채훈": {
+            "pw": "9678",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "좋음. ",
+            "progTitle": "2-1 : 일차부등식 들어갈 차례 / 2-2 : 직각삼각형의 닮음",
+            "progLevel": "상",
+            "hwRate": "70%",
+            "hwCmt": "양을 전부 채우지는 못했습니다.",
+            "testScore": "25/30점",
+            "testAnal": "과목 이해도가 좋습니다. ",
+            "mainCmt": "이채훈 학생은 2-1 식의 계산 과정에서 계산 실수가 조금 있습니다. 이는 누구나 하는 것이니 다그치실 필요가 없습니다. 그러나 아이가 지식을 흡수하려는 태도가 아주 좋습니다. 계속 할 수 있다고 하면 알아서 잘 따라오더라고요. 그것이 지난 학기때 모든 시험을 100점을 맞은 이유이기도 합니다.\n\n과제를 아주 잘 이행하고 있습니다만, 방학이 되어 약간 기강이 해이해져서 숙제를 전부 못한 상황에 처했습니다. 어려워 하는 부분들이 있어서 그것을 집중적으로 공략해주면 거의 대부분의 문제를 본인의 힘으로 풀어낼 힘이 생길 것입니다.\n\n다만, 우려스러운 부분은 또래집단에서 게임을 좀 진심으로 한다는 점인데, 보통 팀 대전게임이 주를 이룹니다. 그래서 본인의 팀이 지게 되면 패배의 원흉이 된 친구들을 비난하는 것이 있는데, 이는 성격형성에 지대한 영향을 끼칩니다. 교육하실때, 너무 다그치지는 마시고 혹시 그런일이 있었냐면서 그러지 마라. 정도로 말려주십쇼.  \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다."
+        },
+        "공태현": {
+            "pw": "9517",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석 13~17일 결석 예정",
+            "attd": "좋음",
+            "progTitle": "2-1 : 일차부등식 들어갈 차례 ",
+            "progLevel": "중",
+            "hwRate": "60%",
+            "hwCmt": "숙제를 좀 채워야 합니다. ",
+            "testScore": "응시하지 않음",
+            "testAnal": "-",
+            "mainCmt": "공태현 학생은 2-1 식의 계산 과정에서 이해하지 못한 부분이 더러 있습니다. 이는 누구나 하는 것이니 다그치실 필요가 없습니다. 그러나 아이가 지식을 흡수하려는 태도가 좋습니다만, 반 분위기가 다소 들떠있어서 아이들을 계속 통제할 수밖에 없습니다. 계속 할 수 있다고 하면 알아서 잘 따라오더라고요. \n\n과제를 잘 이행하고 있지 않습니다. 수학이 이해과목이라고는 하지만 연습이 반드시 수반되어야 합니다. 저 또한 연습을 많이 했습니다. 방학이 되어 약간 기강이 해이해져서 숙제를 전부 못한 상황에 처했습니다. 가정에서도 지도를 좀 부탁드립니다. 어려워 하는 부분들이 있어서 그것을 집중적으로 공략해주면 거의 대부분의 문제를 본인의 힘으로 풀어낼 힘이 생길 것입니다.\n\n다만, 우려스러운 부분은 또래집단에서 게임을 좀 진심으로 한다는 점인데, 보통 팀 대전게임이 주를 이룹니다. 그래서 본인의 팀이 지게 되면 패배의 원흉이 된 친구들을 비난하는 것이 있는데, 이는 성격형성에 지대한 영향을 끼칩니다. 교육하실때, 너무 다그치지는 마시고 혹시 그런일이 있었냐면서 그러지 마라. 정도로 말려주십쇼.  \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다."
+        },
+        "정진우": {
+            "pw": "0383",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "다소 시끄러움",
+            "progTitle": "2-1 : 일차부등식 들어갈 차례 / 2-2 : 직각삼각형의 닮음",
+            "progLevel": "중",
+            "hwRate": "50% 미만",
+            "hwCmt": "예전보다는 개선됨",
+            "testScore": "6/30",
+            "testAnal": "이해는 되긴 하나 본인의 생각이 우선이라 생각해서 공식을 변화함. ",
+            "mainCmt": "공태현 학생은 2-1 식의 계산 과정에서 이해하지 못한 부분이 더러 있습니다. 그러나 아이가 지식을 흡수하려는 태도가 좋습니다만, 반 분위기가 다소 들떠있어서 아이들을 계속 통제할 수밖에 없습니다. 계속 할 수 있다고 하면 알아서 잘 따라오더라고요. \n\n과제를 잘 이행하고 있지 않습니다. 수학이 이해과목이라고는 하지만 연습이 반드시 수반되어야 합니다. 저 또한 연습을 많이 했습니다. 방학이 되어 약간 기강이 해이해져서 숙제를 전부 못한 상황에 처했습니다. 가정에서도 지도를 좀 부탁드립니다. 어려워 하는 부분들이 있어서 그것을 집중적으로 공략해주면 거의 대부분의 문제를 본인의 힘으로 풀어낼 힘이 생길 것입니다.\n\n다만, 우려스러운 부분은 또래집단과 있을 때 말이 너무 많습니다. 언어 사용 태도를 조금 개선해야 합니다. 비속어 사용보다 더 중요한 것은 상황을 본인 마음대로 끌고 가려 하는 권위적 태도가 조금 있습니다. 타인에게 비난하는 성격을 제가 비판하면 남들도 그런다면서 안 하겠다는 말을 가까스로 합니다. 휴대폰으로 sns나 숏폼같은 것에 빠져 있는 것도 있는데 별로 질이 좋지 못한 영상을 주로 보는 것 같아서 가정에서 또한 지도가 필요한 것 같습니다. \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다."
+        },
+        "김가연": {
+            "pw": "2058",
+            "date": "2026. 01. 13. (화)",
+            "att": "고입 준비 후 정상 출석",
+            "attd": "매우 좋음",
+            "progTitle": "공통수학1 : 여러 가지 방정식, 부등식 / 공통수학2 : 평면좌표",
+            "progLevel": "상",
+            "hwRate": "100%",
+            "hwCmt": "완벽함",
+            "testScore": "70점대",
+            "testAnal": "테스트 자체의 난이도가 높아서 70점 정도면 고등학교에서 상위권을 유지할 수 있음. ",
+            "mainCmt": "김가연 학생은 제가 본 학생중에서 정말 태도가 좋고 잘 웃는 학생이라 마주칠 때마다 기분을 좋게 합니다. (가연이같은 친구들만 있었으면 좋겠습니다.ㅎㅎㅎ)\n\n공통수학1 같은 경우에는 기본적으로 이해도도 좋고 과제수행도도 너무 좋아서 딱히 지적할 게 없지만, 아직 처음 배우는 단계라 고난도 문제가 나오게 되면 멈칫하는 경우가 있습니다. 다만 문제를 풀고자 하는 깡이 있기 때문에 가볍게 1등급을 만들어 드릴 수 있습니다. 구 4% 내의 1등급 체제에서 1등급을 받았던 친구들의 공통점이 '본인이 잘 몰라도 일단 도전해보기'의 특징이 있었습니다. 가연이가 그렇습니다.\n\n공통수학2는 1월 12일 개강하였습니다만, 가연이가 결석하여 영상으로 보강을 진행하는 것을 알려드립니다. \n\n다음 주에는 공통수학1 2개의 대단원을 마치면서 2월 되기 전 공통수학1을 끝내도록 할 것이고, \n미추홀외고에 진학해서도 본인(선배)를 따라 상위권에 자리하도록 열심히 지도하겠습니다."
+        },
+        "송시후": {
+            "pw": "6147",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "좋음",
+            "progTitle": "공통수학1 : 여러 가지 방정식, 부등식 / 공통수학2 : 평면좌표",
+            "progLevel": "상",
+            "hwRate": "70%",
+            "hwCmt": "대부분 해왔으나, 중간중간 풀리지 않은 곳이 있음.",
+            "testScore": "70점대",
+            "testAnal": "테스트 자체의 난이도가 높아서 70점 정도면 고등학교에서 상위권을 유지할 수 있음.",
+            "mainCmt": "송시후 학생은 이해력이 아주 뛰어납니다. 성심성의껏 잘 알려주면 거의 모든 것을 풀어낼 힘이 있는 학생입니다. 처음 제가 봤을 때의 시후와는 딴판이 됐습니다. 그러나 문제가 있는 것은, 과제 완성도가 살짝 미흡하다는 점입니다. 방학동안 1월과 2월에 학원에서 자습시간을 의무화 한 이후로 시간이 넘칠 텐데, 그때 과제를 모두 메꾸도록 하겠습니다. \n\n공통수학1 같은 경우에는 기본적으로 이해도도 좋고 과제수행도도 좋아서 딱히 지적할 게 없지만, 아직 처음 배우는 단계라 고난도 문제가 나오게 되면 멈칫하는 경우가 있습니다. 다만 문제를 풀고자 하는 깡이 있기 때문에 가볍게 1등급을 만들어 드릴 수 있습니다. 구 4% 내의 1등급 체제에서 1등급을 받았던 친구들의 공통점이 '본인이 잘 몰라도 일단 도전해보기'의 특징이 있었습니다. 시후가 그렇습니다.\n\n공통수학2는 1월 12일 개강하였습니다. 아이가 처음 개념만 잘 주입되면, 기본 계산력이 탄탄해서 실수를 잘 하지는 않습니다. \n\n다음 주에는 공통수학1 2개의 대단원을 마치면서 2월 되기 전 공통수학1을 끝내도록 할 것이고, 고등학교에 진학해서도 선생님을 잘 따라 상위권에 자리하도록 열심히 지도하겠습니다."
+        },
+        "이길준": {
+            "pw": "5647",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "매우 좋음",
+            "progTitle": "공통수학1 : 여러 가지 방정식, 부등식 / 공통수학2 : 평면좌표",
+            "progLevel": "상",
+            "hwRate": "90%",
+            "hwCmt": "완벽함",
+            "testScore": "70점",
+            "testAnal": "기본 개념과 유형에 대해서는 아주 좋으나, 고난도 문제에서 헤메는 경향 有",
+            "mainCmt": "이길준 학생은 이해력이 아주 뛰어납니다. 성심성의껏 잘 알려주면 거의 모든 것을 풀어낼 힘이 있는 학생입니다. 과제 완성도도 훌륭해서 밀리는 일이 거의 없습니다. \n\n공통수학1 같은 경우에는 기본적으로 이해도도 좋고 과제수행도도 좋아서 딱히 지적할 게 없지만, 아직 처음 배우는 단계라 고난도 문제가 나오게 되면 멈칫하는 경우가 있습니다. 다만 문제를 풀고자 하는 깡이 있기 때문에 가볍게 1등급을 만들어 드릴 수 있습니다. 구 4% 내의 1등급 체제에서 1등급을 받았던 친구들의 공통점이 '본인이 잘 몰라도 일단 도전해보기'의 특징이 있었습니다. 시후가 그렇습니다.\n\n공통수학2는 1월 12일 개강하였습니다. 아이가 처음 개념만 잘 주입되면, 기본 계산력이 탄탄해서 실수를 잘 하지는 않습니다. \n\n다음 주에는 공통수학1 2개의 대단원을 마치면서 2월 되기 전 공통수학1을 끝내도록 할 것이고, 고등학교에 진학해서도 선생님을 잘 따라 상위권에 자리하도록 열심히 지도하겠습니다."
+        },
+        "제유진": {
+            "pw": "1553",
+            "date": "2026. 01. 13. (화)",
+            "att": "결석 잦음.",
+            "attd": "매우 좋음",
+            "progTitle": "공통수학1 : 여러 가지 방정식, 부등식",
+            "progLevel": "상",
+            "hwRate": "아래에 기입",
+            "hwCmt": "아래에 기입",
+            "testScore": "아래에 기입",
+            "testAnal": "아래에 기입",
+            "mainCmt": "유진이가 현재 학교별 시험 일정이 상이함. 예비고1의 개강이 빠름. \n과 같은 문제 때문에 현재 진도가 밀려있고 그에 따라 이해하는 속도가 느려졌는데 \n이 문제를 해결하기 위해 유진이만을 위하여 매주 금요일 2시~5시에 보강을 제가 만족할 때 까지 하려고 합니다.\n학습 격차를 줄이고 매주 테스트를 통하여 결과를 보고드려서 아이의 성취도를 더 끌어 올리도록 하겠습니다.\n개인 역량으로는 공통수학2 수업을 들어도 무방하지만, 아직 힘들 수도 있어서 추천드리지 않았습니다.\n올해 여름방학이나 내년에 선행을 나가도 괜찮을 것 같습니다. 본 시험에 아주 강한 친구라 계속 제가 관리하고 있으면 100점을 계속 맞을 겁니다."
+        },
+        "권아영": {
+            "pw": "3385",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "매우 좋음",
+            "progTitle": "공통수학1 : 여러 가지 방정식, 부등식",
+            "progLevel": "상",
+            "hwRate": "100%",
+            "hwCmt": "완벽함",
+            "testScore": "90점",
+            "testAnal": "이해도가 아주 뛰어남. ",
+            "mainCmt": "권아영 학생은 이해력이 아주 뛰어납니다. 처음에 진도가 밀려서 밑의 반에 있었는데 이 친구는 밑의 반에 있을 실력이 아닙니다. 성심성의껏 잘 알려주면 거의 모든 것을 풀어낼 힘이 있는 학생입니다. 과제 완성도도 훌륭해서 밀리는 일이 거의 없습니다. \n\n공통수학1 같은 경우에는 기본적으로 이해도도 좋고 과제수행도도 좋아서 딱히 지적할 게 없지만, 아직 처음 배우는 단계라 고난도 문제가 나오게 되면 멈칫하는 경우가 있습니다. 다만 문제를 풀고자 하는 깡이 있기 때문에 가볍게 1등급을 만들어 드릴 수 있습니다. 구 4% 내의 1등급 체제에서 1등급을 받았던 친구들의 공통점이 '본인이 잘 몰라도 일단 도전해보기'의 특징이 있었습니다. 아영이가 그렇습니다.\n\n공통수학2는 1월 12일 개강하였습니다. 역량이 아주 좋아서 이번 겨울방학을 통해 공통수학2도 개념을 같이 잡아주면 좋겠다고 판단했으나 본인 의사가 수강하지 않겠다고 하니 여름방학 때 잘 지도하겠습니다. 사실 여름방학이 아주 짧아서 개념을 한 번 빼기가 힘든 감이 없지 않아 있어서 항상 2학기 진도는 겨울방학 때 1학기 진도와 같이 빼는 추세가 있습니다.\n\n다음 주에는 공통수학1 2개의 대단원을 마치면서 2월 되기 전 공통수학1을 끝내도록 할 것이고, 고등학교에 진학해서도 선생님을 잘 따라 상위권에 자리하도록 열심히 지도하겠습니다."
+        },
+        "김유진": {
+            "pw": "8388",
+            "date": "2026. 01. 13. (화)",
+            "att": "정상 출석",
+            "attd": "매우 좋음",
+            "progTitle": "공통수학1 : 복소수와 이차방정식 / 공통수학2 : 평면좌표",
+            "progLevel": "중",
+            "hwRate": "85%",
+            "hwCmt": "좋습니다.",
+            "testScore": "클리닉으로 대체 ",
+            "testAnal": "현재 학습격차가 있어서 주말에 클리닉으로 격차를 줄이는 중입니다.",
+            "mainCmt": "김유진 학생은 이제 처음 공부하므로 힘들어하는 것이 조금 있습니다. 지금 혼자서 저와 같이 공부하고 있는데, 이참에 남들과 벌어진 격차를 좁힐 수 있는 기회입니다. 전부 메꾸면서 공통수학1진도를 병행하여 이해도를 높이겠습니다. 과제 완성도도 훌륭해서 밀리는 일이 거의 없습니다. 중학교 수학 학습과 고1 과정을 병행하여 학습 중입니다. 아이가 이해도는 좋습니다.\n\n아이가 약간 자신감이 낮은데, 이는 수학 학습에 있어서 지대한 영향을 미칩니다. 일단 몰라도 덤벼보는 깡이 있어야 합니다. 정확한 개념과 연습을 통하여도 점수 향상이 되겠지만, 자신감을 매사에 갖고 과업에 임하는 태도도 성적 향상에 아주 큰 영향을 미치기 때문에 가정에서도 항상 할 수 있다는 것을 교육해주십시오. \n\n공통수학2는 1월 12일 개강하였습니다. 대개 여름방학이 아주 짧아서 개념을 한 번 빼기가 힘든 감이 없지 않아 있어서 항상 2학기 진도는 겨울방학 때 1학기 진도와 같이 빼는 추세가 있습니다. 첫 수업을 해 봤는데 학습 격차를 줄이고 수업을 해 보니 당일 수업에 대해서 전부 이해하는 모습을 보였습니다. 규칙적인 학습이 수반되면 유진이도 현행 1등급을 쟁취할 수 있는 잠재력이 있는 친구입니다. 거짓말 안 합니다. \n\n개학 하기 전 공통수학1을 반드시 1회독을 할 것이고, 고등학교에 진학해서도 선생님을 잘 따라 상위권에 자리하도록 열심히 지도하겠습니다."
+        }
     };
 
     function checkReport() {
         const name = document.getElementById('studentSelect').value;
         const pw = document.getElementById('pwInput').value;
 
-        if (!name) return alert("학생 이름을 선택해주세요.");
-        if (studentDB[name] && studentDB[name] === pw) {
+        if(!name) return alert("학생 이름을 선택해주세요.");
+
+        if(studentDB[name] && studentDB[name].pw === pw) {
             // 로그인 성공
             document.getElementById('login-box').style.display = 'none';
             document.getElementById('report-result').style.display = 'block';
             document.getElementById('rName').innerText = name;
-            // *실제 서비스에서는 여기서 해당 학생의 고유 리포트 데이터를 불러와야 합니다.
-            // 현재는 예시 데이터(Sample)가 출력됩니다.
+            
+            const data = studentDB[name];
+            document.getElementById('rDate').innerText = data.date;
+            
+            // 테이블 내용 생성
+            const html = `
+            <table class="report-table">
+                <tr><th>① 출결</th><td>${data.att}</td></tr>
+                <tr><th>② 태도</th><td>${data.attd}</td></tr>
+                <tr><th>③ 진도</th><td>${data.progTitle}<br>(이해도: <span style="color:var(--neon-blue); font-weight:bold">${data.progLevel}</span>)</td></tr>
+                <tr><th>④ 숙제</th><td>수행률: <b style="color:var(--neon-pink)">${data.hwRate}</b><br><span style="font-size:13px; color:#aaa">${data.hwCmt}</span></td></tr>
+                <tr><th>⑤ 테스트</th><td><span class="score-box">${data.testScore}</span><br><span style="font-size:13px; color:#aaa">${data.testAnal}</span></td></tr>
+            </table>
+            `;
+            
+            document.getElementById('report-content').innerHTML = html;
+            document.getElementById('rComment').innerText = data.mainCmt;
+            
         } else {
             alert("비밀번호(뒷번호 4자리)가 일치하지 않습니다.");
         }
