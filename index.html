@@ -21,10 +21,12 @@
             margin: 0; padding: 0;
             font-family: 'Pretendard', sans-serif;
             background-color: var(--bg-dark);
-            /* 배경: 속도감이 느껴지는 어두운 도로/서킷 느낌 */
+            
+            /* [수정됨] 보내주신 파일명 bg.jpg 로 변경했습니다 */
             background-image: 
-                linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.9) 100%),
-                url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2000&auto=format&fit=crop'); 
+                linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%),
+                url('bg.jpg'); 
+                
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -45,18 +47,18 @@
         .text-pink { color: var(--neon-pink); text-shadow: 0 0 10px rgba(255, 0, 122, 0.5); }
         .text-green { color: var(--neon-green); text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
 
-        /* [상단 내비게이션] - 가로 스크롤 가능하게 변경 (메뉴가 많아서) */
+        /* [상단 내비게이션] */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 60px;
             background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
-            overflow-x: auto; /* 모바일 대응 */
+            overflow-x: auto;
             white-space: nowrap;
         }
         .nav-inner {
             display: flex; justify-content: center; align-items: center;
-            height: 100%; min-width: 500px; /* 메뉴가 짤리지 않게 */
+            height: 100%; min-width: 500px;
             margin: 0 auto;
         }
         .nav-btn {
@@ -114,6 +116,14 @@
             width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid #444;
             color: white; border-radius: 6px; margin-bottom: 8px; box-sizing: border-box;
         }
+
+        /* [옵션 배경 검은색 처리] */
+        .login-input option, 
+        .login-input optgroup {
+            background-color: #111; /* 배경을 어둡게 */
+            color: white;           /* 글씨를 밝게 */
+        }
+
         .btn-action {
             width: 100%; padding: 14px; border: none; border-radius: 6px;
             background: linear-gradient(90deg, var(--neon-blue), #0077ff);
@@ -198,7 +208,7 @@
     </div>
 
     <div class="glass-card" style="border-left-color: var(--neon-blue);">
-        <div class="card-title">🏫 내신 수업 </div>
+        <div class="card-title">🏫 내신 수업 (School Exam)</div>
         <div class="curri-item">
             <span style="color:var(--neon-blue); font-weight:bold;">1. GEAR UP (방학)</span>
             <div class="sub-text">기본 개념 + 발전 개념서 (과제: 수매씽)</div>
@@ -218,7 +228,7 @@
     </div>
 
     <div class="glass-card" style="border-left-color: var(--neon-pink);">
-        <div class="card-title">🚀 수능 수업 </div>
+        <div class="card-title">🚀 수능 수업 (CSAT)</div>
         <div class="curri-item">
             <div style="font-weight:bold;">Step 1. ENGINE (겨울방학)</div>
             <div class="sub-text">기본개념 + 최근 3개년 기출 (3점~쉬운4점) / 과제: ENGINE OIL</div>
@@ -238,7 +248,7 @@
     </div>
 
     <div class="glass-card" style="border-left-color: var(--neon-purple);">
-        <div class="card-title">✍️ 수리논술 </div>
+        <div class="card-title">✍️ 수리논술 (Essay)</div>
         <div class="sub-text">
             • <b>SEASON 1 (4개월)</b>: 단원별 맞춤 개념 학습<br>
             • <b>SEASON 2 (2개월)</b>: 실전 문제풀이 & 서술 연습<br>
@@ -446,8 +456,8 @@
 
 <footer>
     <b>RACE TO MIRACLE | 우독학원</b><br>
-    인천광역시 서구 원당대로 676 제일아이조움 601,602호(상세주소)<br>
-    문의: 010-2319-7526 (박원욱T), 032-719-4054 (우독학원)
+    인천광역시 서구 (상세주소)<br>
+    문의: 010-2319-7526 (박원욱T)
 </footer>
 
 <script>
