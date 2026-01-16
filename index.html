@@ -102,7 +102,7 @@
         .comment-user { font-size: 12px; font-weight: bold; color: #aaa; margin-bottom: 3px; }
         .comment-text { font-size: 13px; color: white; }
         .reply-item { margin-left: 20px; margin-top: 8px; padding: 8px; background: rgba(0, 242, 255, 0.05); border-radius: 4px; }
-        .reply-badge { font-size: 10px; background: var(--neon-pink); color: white; padding: 1px 4px; border-radius: 3px; margin-right: 5px; }
+        .reply-badge { font-size: 10px; background: var(--neon-blue); color: black; padding: 1px 4px; border-radius: 3px; margin-right: 5px; font-weight:bold;}
         .post-image { max-width: 100%; border-radius: 8px; margin-top: 15px; border: 1px solid #333; }
 
         /* 입력 폼 */
@@ -118,7 +118,7 @@
         .report-table td { padding: 8px 0; color: white; border-bottom: 1px solid #333; line-height: 1.4; }
         .score-box { display: inline-block; padding: 3px 8px; background: var(--neon-pink); color: white; font-weight: bold; border-radius: 4px; font-size: 11px; }
 
-        /* [푸터 수정] - 밝은색, 큰 폰트 */
+        /* [푸터] */
         footer { 
             text-align: center; 
             color: #ddd; /* 밝은 회색 */
@@ -348,11 +348,13 @@
             <div id="comment-list"></div>
             
             <div style="margin-top:15px; display:flex; gap:5px;">
-                <input type="text" id="comment-input" class="input-dark" placeholder="익명 댓글 달기...">
+                <input type="text" id="comment-input" class="input-dark" placeholder="댓글 내용...">
                 <button class="btn-small" onclick="addComment()">등록</button>
             </div>
+            
             <div id="reply-box" style="display:none; margin-top:10px; padding:10px; background:#222; border-radius:5px;">
-                <div style="font-size:11px; color:var(--neon-pink); margin-bottom:5px;">선생님 답글 달기</div>
+                <div style="font-size:11px; color:var(--neon-blue); margin-bottom:5px;">↳ 답글 달기</div>
+                <input type="text" id="reply-name" class="input-dark" placeholder="이름 (예: 박원욱T, 익명)" style="margin-bottom:5px;">
                 <input type="text" id="reply-input" class="input-dark" placeholder="답글 내용">
                 <div style="display:flex; gap:5px;">
                     <button class="btn-small" onclick="submitReply()">등록</button>
@@ -491,8 +493,8 @@
         window.scrollTo(0, 0);
     }
 
-    // --- 게시판 로직 (초기화) ---
-    let posts = []; // 기존 더미 글 삭제
+    // --- 게시판 로직 ---
+    let posts = []; 
     let currentPostId = null;
     let replyTargetIndex = null;
 
@@ -538,7 +540,7 @@
     function savePost() {
         const pw = document.getElementById('admin-pw').value;
         const title = document.getElementById('write-title').value;
-        const img = document.getElementById('write-img').value; // 이미지 처리
+        const img = document.getElementById('write-img').value; 
         const content = document.getElementById('write-content').value;
 
         if(pw !== "1234") { 
@@ -550,7 +552,7 @@
         const newPost = {
             id: Date.now(),
             title: title,
-            image: img, // 이미지 저장
+            image: img, 
             content: content,
             date: new Date().toLocaleDateString(),
             comments: []
@@ -577,14 +579,13 @@
         document.getElementById('detail-meta').innerText = `${post.date} | 박원욱T`;
         document.getElementById('detail-content').innerText = post.content;
         
-        // 이미지 렌더링 로직
         const imgArea = document.getElementById('detail-image-area');
         imgArea.innerHTML = "";
         if(post.image) {
             const imgTag = document.createElement('img');
             imgTag.src = post.image;
             imgTag.className = "post-image";
-            imgTag.onerror = function() { this.style.display='none'; }; // 엑박 방지
+            imgTag.onerror = function() { this.style.display='none'; }; 
             imgArea.appendChild(imgTag);
         }
         
@@ -603,7 +604,7 @@
             let repliesHtml = "";
             if(c.replies && c.replies.length > 0) {
                 c.replies.forEach(r => {
-                    repliesHtml += `<div class="reply-item"><span class="reply-badge">T</span>${r}</div>`;
+                    repliesHtml += `<div class="reply-item"><span class="reply-badge">↳</span><b style="color:#aaa; font-size:11px; margin-right:5px;">${r.name}</b>${r.text}</div>`;
                 });
             }
 
@@ -627,11 +628,10 @@
     }
 
     function openReplyBox(index) {
-        const pw = prompt("선생님 비밀번호를 입력하세요 (1234)");
-        if(pw !== "1234") return;
-
+        // 비밀번호 확인 삭제 (바로 열림)
         replyTargetIndex = index;
         document.getElementById('reply-box').style.display = 'block';
+        document.getElementById('reply-name').value = "박원욱T"; // 기본값
         document.getElementById('reply-input').focus();
     }
 
@@ -641,12 +641,13 @@
     }
 
     function submitReply() {
+        const name = document.getElementById('reply-name').value || "익명";
         const text = document.getElementById('reply-input').value;
         if(!text) return;
 
         const post = posts.find(p => p.id === currentPostId);
         if(post.comments[replyTargetIndex]) {
-            post.comments[replyTargetIndex].replies.push(text);
+            post.comments[replyTargetIndex].replies.push({name: name, text: text});
         }
         closeReplyBox();
         renderComments();
