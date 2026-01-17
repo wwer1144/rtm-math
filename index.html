@@ -11,9 +11,11 @@
             --neon-pink: #ff007a;
             --neon-green: #39ff14;
             --neon-purple: #bc13fe;
-            --glass-bg: rgba(15, 15, 20, 0.95);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --text-gray: #b0b8c4;
+            --neon-gold: #ffd700;
+            --glass-bg: rgba(20, 20, 25, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-main: #ffffff;
+            --text-sub: #e0e0e0;
             --bg-dark: #050505;
         }
 
@@ -21,34 +23,37 @@
             margin: 0; padding: 0;
             font-family: 'Pretendard', sans-serif;
             background-color: var(--bg-dark);
-            background-image: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%), url('bg.jpg'); 
+            background-image: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.9) 100%), url('bg.jpg'); 
             background-size: cover; background-position: center; background-attachment: fixed;
-            color: white; min-height: 100vh;
-            padding-top: 60px; /* 상단 메뉴 공간 */
-            padding-bottom: 50px;
+            color: var(--text-main); min-height: 100vh;
+            padding-top: 65px; 
+            padding-bottom: 60px;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
         /* 스크롤바 */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
 
-        /* [상단 내비게이션 - 스크롤형] */
+        /* [상단 내비게이션] */
         .navbar {
-            position: fixed; top: 0; left: 0; width: 100%; height: 55px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 60px;
             background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--glass-border);
             z-index: 2000; overflow-x: auto; white-space: nowrap;
             -webkit-overflow-scrolling: touch; 
         }
-        .nav-inner { display: inline-flex; height: 100%; padding: 0 10px; min-width: 100%; box-sizing: border-box; }
+        .nav-inner { display: inline-flex; height: 100%; padding: 0 10px; min-width: 100%; box-sizing: border-box; align-items: center;}
         .nav-btn {
-            background: none; border: none; color: #888;
-            font-size: 13px; font-weight: 700; cursor: pointer;
-            padding: 0 12px; height: 100%; flex-shrink: 0;
+            background: none; border: none; color: #aaa;
+            font-size: 15px; 
+            font-weight: 800; cursor: pointer;
+            padding: 0 15px; height: 100%; flex-shrink: 0;
             transition: 0.2s; display: flex; align-items: center;
         }
-        .nav-btn.active { color: var(--neon-blue); border-bottom: 2px solid var(--neon-blue); background: rgba(0, 242, 255, 0.05); }
+        .nav-btn.active { color: var(--neon-blue); border-bottom: 3px solid var(--neon-blue); background: rgba(0, 242, 255, 0.05); color:white;}
 
         /* [공통 컨테이너] */
         .container {
@@ -61,79 +66,134 @@
         /* [카드 스타일] */
         .glass-card {
             background: var(--glass-bg); border: 1px solid var(--glass-border);
-            border-radius: 12px; padding: 20px; margin-bottom: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; overflow: hidden;
+            border-radius: 16px; padding: 25px; margin-bottom: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6); position: relative; overflow: hidden;
         }
-        .glass-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--neon-blue); }
-        .card-title { font-size: 17px; font-weight: 800; margin-bottom: 15px; color: white; display: flex; align-items: center; gap: 8px; }
-        .sub-text { font-size: 13px; color: #aaa; line-height: 1.6; }
+        .glass-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--neon-blue); }
+        .card-title { font-size: 20px; font-weight: 800; margin-bottom: 15px; color: white; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;}
+        .sub-text { font-size: 15px; color: var(--text-sub); line-height: 1.7; }
 
-        /* [커리큘럼 & 수업 스타일] */
-        .curri-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .curri-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .track-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 800; margin-bottom: 5px; color: black; background: var(--neon-blue); }
+        /* [로그인 화면 복구 스타일 - 사진 기반] */
+        .login-card {
+            background: #0f0f12; /* 사진처럼 진한 검정 배경 */
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 1px solid #333;
+            max-width: 400px;
+            margin: 40px auto;
+        }
+        .login-logo-container {
+            margin-bottom: 20px;
+            display: flex; justify-content: center;
+        }
+        .login-logo {
+            width: 120px;
+            /* 사진 속 로고 뒤 파란 빛 효과 */
+            filter: drop-shadow(0 0 15px var(--neon-blue)); 
+        }
+        .login-header {
+            font-size: 22px; font-weight: 800; color: white; margin-bottom: 10px;
+        }
+        .login-desc {
+            font-size: 14px; color: #888; margin-bottom: 30px;
+        }
+        .login-input-field {
+            width: 100%;
+            padding: 16px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+        .login-input-field:focus { border-color: var(--neon-pink); }
+        
+        /* 사진 속 핫핑크 버튼 복구 */
+        .btn-hot-pink {
+            width: 100%;
+            padding: 18px;
+            background: #ff007a; /* 사진과 똑같은 핫핑크 */
+            color: white;
+            font-size: 18px;
+            font-weight: 800;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(255, 0, 122, 0.4);
+            transition: 0.2s;
+        }
+        .btn-hot-pink:active { transform: scale(0.98); }
+
+
+        /* [커리큘럼 - 서킷 디자인] */
+        .circuit-section { margin-bottom: 30px; position: relative; padding-left: 15px; }
+        .circuit-title { font-size: 18px; font-weight: 900; color: var(--neon-blue); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; display: inline-block; border-bottom: 2px solid var(--neon-blue);}
+        .curri-item { 
+            position: relative; margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.05); 
+            border-radius: 10px; border-left: 4px solid #444; transition: 0.3s;
+        }
+        .curri-item:hover { border-left-color: var(--neon-pink); transform: translateX(5px); background: rgba(255,255,255,0.08); }
+        .track-badge { 
+            display: inline-block; padding: 4px 8px; border-radius: 4px; 
+            font-size: 12px; font-weight: 900; margin-bottom: 8px; 
+            color: #000; background: var(--neon-blue); text-transform: uppercase;
+        }
+
+        /* 수리논술 스페셜 */
+        .essay-special {
+            border: 2px solid var(--neon-purple);
+            background: linear-gradient(135deg, rgba(188, 19, 254, 0.1), rgba(0,0,0,0));
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.2);
+        }
+        .essay-special .card-title { color: var(--neon-purple); border-bottom-color: var(--neon-purple); }
+        .essay-step { margin-bottom: 10px; font-size: 15px; color: white; display: flex; align-items: start; }
+        .essay-step b { color: var(--neon-purple); margin-right: 8px; white-space: nowrap; }
+
+        /* [명예의 전당] */
+        .trophy-case { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid #444; }
+        .univ-badge { background: #fff; color: #000; font-size: 13px; font-weight: 800; padding: 5px 10px; border-radius: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .honor-row { display: flex; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #444; }
+        .honor-row:last-child { border-bottom: none; }
+        .medal { font-size: 28px; margin-right: 15px; text-shadow: 0 0 10px rgba(255,215,0,0.5); }
+        .student-info { font-size: 16px; font-weight: bold; color: white; }
+        .achievement { font-size: 14px; color: var(--neon-pink); margin-top: 4px; font-weight: 500; }
+
+        /* [게시판] */
+        .board-list-item { padding: 18px; border-bottom: 1px solid #333; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .post-title { font-size: 16px; font-weight: bold; color: white; margin-bottom: 5px; }
+        .post-meta { font-size: 13px; color: #888; }
+        .board-view { display: none; }
+        .board-view.active { display: block; }
+        .input-dark { width: 100%; background: #111; border: 1px solid #555; color: white; padding: 12px; border-radius: 8px; font-size: 15px; box-sizing: border-box; margin-bottom: 10px; }
+        .btn-action { width: 100%; padding: 16px; border: none; border-radius: 8px; background: linear-gradient(90deg, var(--neon-blue), #0077ff); color: white; font-weight: 800; font-size: 16px; cursor: pointer; margin-top: 10px; }
+        .btn-small { padding: 8px 15px; background: #333; color: white; border: 1px solid #555; border-radius: 6px; font-size: 13px; cursor: pointer; }
+        .btn-write { position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; border-radius: 50%; background: var(--neon-pink); color: white; border: none; font-size: 28px; box-shadow: 0 5px 20px rgba(255,0,122,0.6); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; }
+
+        /* [리포트 테이블] */
+        .report-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 15px; }
+        .report-table th { text-align: left; color: #aaa; padding: 12px 5px; width: 70px; border-bottom: 1px solid #333; vertical-align: top;}
+        .report-table td { padding: 12px 5px; color: white; border-bottom: 1px solid #333; }
+        .score-box { display: inline-block; padding: 3px 8px; background: var(--neon-pink); color: white; font-weight: bold; border-radius: 4px; font-size: 11px; }
         .progress-box { background: rgba(0,0,0,0.5); padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 13px; border: 1px solid #333; }
         .progress-date { color: var(--neon-pink); font-weight: bold; margin-bottom: 5px; display: block; font-size: 11px; }
+
+        /* 푸터 */
+        footer { 
+            text-align: center; color: #eee; font-size: 14px; 
+            padding: 50px 20px 80px 20px; border-top: 1px solid #333; 
+            margin-top: 40px; background: rgba(0,0,0,0.7); line-height: 1.8;
+        }
+        footer b { color: white; font-size: 15px; font-weight: 800; }
         
         .hl-blue { color: var(--neon-blue); font-weight: bold; }
         .hl-pink { color: var(--neon-pink); font-weight: bold; }
-
-        /* [명예의 전당] */
-        .honor-row { display: flex; align-items: center; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #333; }
-        .honor-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .medal { font-size: 20px; margin-right: 10px; }
-        .student-info { font-size: 14px; font-weight: bold; color: white; }
-        .achievement { font-size: 12px; color: var(--neon-pink); margin-top: 2px; }
-
-        /* [게시판 (RTM 아카이브)] */
-        .board-list-item { 
-            padding: 15px; border-bottom: 1px solid #333; cursor: pointer; transition: 0.2s; 
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .board-list-item:hover { background: rgba(255,255,255,0.05); }
-        .post-title { font-size: 15px; font-weight: bold; color: white; margin-bottom: 4px; }
-        .post-meta { font-size: 11px; color: #666; }
-        
-        .board-view { display: none; }
-        .board-view.active { display: block; }
-        
-        .comment-section { margin-top: 20px; border-top: 1px solid #333; padding-top: 15px; }
-        .comment-item { margin-bottom: 15px; padding-left: 10px; border-left: 2px solid #333; }
-        .comment-user { font-size: 12px; font-weight: bold; color: #aaa; margin-bottom: 3px; }
-        .comment-text { font-size: 13px; color: white; }
-        .reply-item { margin-left: 20px; margin-top: 8px; padding: 8px; background: rgba(0, 242, 255, 0.05); border-radius: 4px; }
-        .reply-badge { font-size: 10px; background: var(--neon-blue); color: black; padding: 1px 4px; border-radius: 3px; margin-right: 5px; font-weight:bold;}
-        .post-image { max-width: 100%; border-radius: 8px; margin-top: 15px; border: 1px solid #333; }
-
-        /* 입력 폼 */
-        .input-dark { width: 100%; background: #111; border: 1px solid #444; color: white; padding: 10px; border-radius: 5px; box-sizing: border-box; margin-bottom: 5px; }
-        .btn-small { padding: 6px 12px; background: #333; color: white; border: none; border-radius: 4px; font-size: 12px; cursor: pointer; }
-        .btn-write { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%; background: var(--neon-pink); color: white; border: none; font-size: 24px; box-shadow: 0 5px 15px rgba(255,0,122,0.5); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; }
-
-        /* [리포트] */
-        .login-input { width: 100%; padding: 12px; background: #222; border: 1px solid #444; color: white; border-radius: 6px; margin-bottom: 8px; box-sizing: border-box; }
-        .btn-action { width: 100%; padding: 14px; border: none; border-radius: 6px; background: linear-gradient(90deg, var(--neon-blue), #0077ff); color: white; font-weight: 800; font-size: 15px; cursor: pointer; margin-top: 10px; }
-        .report-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
-        .report-table th { text-align: left; color: #888; padding: 8px 0; width: 60px; border-bottom: 1px solid #333; vertical-align: top;}
-        .report-table td { padding: 8px 0; color: white; border-bottom: 1px solid #333; line-height: 1.4; }
-        .score-box { display: inline-block; padding: 3px 8px; background: var(--neon-pink); color: white; font-weight: bold; border-radius: 4px; font-size: 11px; }
-
-        /* [푸터] */
-        footer { 
-            text-align: center; 
-            color: #ddd; /* 밝은 회색 */
-            font-size: 13px; /* 폰트 키움 */
-            padding: 40px 10px 80px 10px; 
-            border-top: 1px solid #333; 
-            margin-top: 30px; 
-            background: rgba(0,0,0,0.5);
-            line-height: 1.8;
-        }
-        footer b {
-            color: white; /* 중요 정보는 완전 흰색 */
-            font-size: 14px; 
-            font-weight: 700;
-        }
     </style>
 </head>
 <body>
@@ -151,17 +211,17 @@
 </nav>
 
 <div id="intro" class="container active">
-    <div style="text-align:center; margin: 20px 0 30px;">
-        <img src="2-1.png" alt="RTM Logo" style="width:120px; margin-bottom:10px; filter:drop-shadow(0 0 10px var(--neon-blue));">
-        <h1 style="font-size:24px; font-style:italic; margin:0;">
+    <div style="text-align:center; margin: 30px 0 40px;">
+        <img src="2-1.png" alt="RTM Logo" style="width:150px; margin-bottom:15px; filter:drop-shadow(0 0 15px var(--neon-blue));">
+        <h1 style="font-size:28px; font-style:italic; margin:0;">
             <span style="color:var(--neon-blue)">RACE</span> TO <span style="color:var(--neon-pink)">MIRACLE</span>
         </h1>
-        <p style="color:#aaa; font-size:13px; margin-top:5px;">"수학의 깊이와 재미, 그 불가능한 공존을 증명합니다."</p>
+        <p style="color:#ccc; font-size:15px; margin-top:10px;">"START YOUR RACE. SHIFT YOUR FUTURE."</p>
     </div>
 
     <div class="glass-card">
-        <div class="card-title">👨‍🏫 박원욱 T Profile</div>
-        <ul style="padding-left:15px; font-size:13px; color:#ddd; line-height:1.7; margin:0;">
+        <div class="card-title">👨‍🏫 박원욱T 프로필</div>
+        <ul style="padding-left:15px; font-size:15px; color:#eee; line-height:1.8; margin:0;">
             <li>인하대학교 수학교육과 졸업</li>
             <li>연세대학교 대학원 수학교육과 과정</li>
             <li>前) 대치명인학원 검단캠퍼스</li>
@@ -173,142 +233,173 @@
 
     <div class="glass-card" style="border-left-color: var(--neon-pink);">
         <div class="card-title">🔥 Teaching Style</div>
-        <div style="margin-bottom:15px;">
-            <b style="color:white; font-size:14px;">(1) 깊이가 다릅니다</b>
-            <p class="sub-text">"수업 참여만으로도 1등급을 쟁취한다." 내신과 수능을 관통하는 깊고 넓은 이해를 선물합니다.</p>
+        <div style="margin-bottom:20px;">
+            <b style="color:var(--neon-blue); font-size:16px;">(1) 압도적 깊이 (Depth)</b>
+            <p class="sub-text">단순 암기는 결국 무너집니다. 내신과 수능을 관통하는 본질적 원리 이해를 통해 어떤 변형 문제도 뚫어낼 힘을 기릅니다.</p>
+        </div>
+        <div style="margin-bottom:20px;">
+            <b style="color:var(--neon-green); font-size:16px;">(2) 몰입의 즐거움 (Immersion)</b>
+            <p class="sub-text">"수학 시간은 지루하다"는 편견을 깹니다. 아이들이 시간 가는 줄 모르고 빠져드는 흡입력 있는 강의를 약속합니다.</p>
         </div>
         <div>
-            <b style="color:white; font-size:14px;">(2) 몰입의 즐거움</b>
-            <p class="sub-text">"지루한 수학은 죄악입니다." 아이들이 시간 가는 줄 모르고 빠져드는 설명을 지향합니다.</p>
+            <b style="color:var(--neon-pink); font-size:16px;">(3) 완주를 돕는 페이스메이커 (Pacing)</b>
+            <p class="sub-text">강의만 하고 끝내지 않습니다. 지치지 않고 수능장까지 완주할 수 있도록, 멘탈과 학습 밸런스를 끝까지 책임지고 관리합니다.</p>
         </div>
     </div>
 </div>
 
 <div id="curriculum" class="container">
-    <h2 style="text-align:center; font-size:20px;">RTM CURRICULUM</h2>
+    <h2 style="text-align:center; font-size:24px; margin-bottom:30px;">RTM CIRCUIT MAP</h2>
     
-    <div class="glass-card" style="border-left-color: var(--neon-green);">
-        <div class="card-title">🌱 선행 수업 (Foundation)</div>
+    <div class="circuit-section">
+        <div class="circuit-title">🏁 선행 학습 과정</div>
         <div class="curri-item">
             <span class="track-badge" style="background:var(--neon-green);">GRIP</span>
-            <div style="font-weight:bold;">공통수학1, 2 / 대수 / 미적분1</div>
-            <div class="sub-text">본 학기 학습을 위한 기본 개념 가볍게 완성</div>
+            <div style="font-weight:bold; font-size:17px; margin-bottom:5px;">공통수학1, 2 / 대수 / 미적분1</div>
+            <div class="sub-text">고등 수학 진입을 위한 기본기 장착 및 개념 완성</div>
         </div>
     </div>
 
-    <div class="glass-card" style="border-left-color: var(--neon-blue);">
-        <div class="card-title">🏫 내신 수업 (School Exam)</div>
+    <div class="circuit-section">
+        <div class="circuit-title">🏎️ 내신 집중 커리큘럼</div>
         <div class="curri-item">
-            <b class="hl-blue">1. GEAR UP (방학)</b>
-            <div class="sub-text">기본 개념 + 발전 개념서 (과제: 수매씽)</div>
+            <div style="color:var(--neon-blue); font-weight:bold; margin-bottom:5px;">1. GEAR UP (방학)</div>
+            <div class="sub-text">기본 개념 + 발전 개념서</div>
         </div>
         <div class="curri-item">
-            <b class="hl-blue">2. 수고스러움 (D-60~21)</b>
-            <div class="sub-text">시험 2달 전 시작, 고난도 문제 분석</div>
+            <div style="color:var(--neon-blue); font-weight:bold; margin-bottom:5px;">2. 수고스러움 (D-60~21)</div>
+            <div class="sub-text">시험 2달 전, 고난도 문제 분석 단계 <br>(난이도 : 고쟁이+일품 수준)</div>
         </div>
         <div class="curri-item">
-            <b class="hl-blue">3. 마부작침 (D-60~21)</b>
-            <div class="sub-text">모의고사 4점 문항 집중 분석</div>
+            <div style="color:var(--neon-blue); font-weight:bold; margin-bottom:5px;">3. 마부작침 (D-60~21)</div>
+            <div class="sub-text">모의고사 4점 문항 집중 분석 훈련</div>
         </div>
         <div class="curri-item">
-            <b class="hl-blue">4. 학교 톺아보기 (D-21~1)</b>
-            <div class="sub-text">학교별 기출 및 내신 스타일 완벽 분석</div>
+            <div style="color:var(--neon-blue); font-weight:bold; margin-bottom:5px;">4. 학교 톺아보기 (D-21~1)</div>
+            <div class="sub-text">학교별 기출 스타일 완벽 분석 및 직전 대비 <br>(교과서+부교재+학교기출+변형문제+수업복습)</div>
         </div>
     </div>
 
-    <div class="glass-card" style="border-left-color: var(--neon-pink);">
-        <div class="card-title">🚀 수능 수업 (CSAT)</div>
+    <div class="circuit-section">
+        <div class="circuit-title">🚀 수능 고득점 커리큘럼</div>
         <div class="curri-item">
-            <b>Step 1. ENGINE (겨울방학)</b>
-            <div class="sub-text">기본개념 + 3개년 기출 (3점~쉬운4점) / 과제: ENGINE OIL</div>
+            <div style="color:var(--neon-pink); font-weight:bold; margin-bottom:5px;">Step 1. ENGINE (겨울방학)</div>
+            <div class="sub-text">수능적 개념 탑재 + 3개년 기출 분석 (3점~쉬운4점)</div>
         </div>
         <div class="curri-item">
-            <b>Step 2. ADVANCING (3~7월)</b>
+            <div style="color:var(--neon-pink); font-weight:bold; margin-bottom:5px;">Step 2. ADVANCING (3~7월)</div>
             <div class="sub-text">실전개념 + 수특 + KICE WORKBOOK (4점~준킬러)</div>
         </div>
         <div class="curri-item">
-            <b>Step 3. 수박N (7~10월)</b>
-            <div class="sub-text">자작문항 N제 + 수능완성 + 킬러기출 (시대인재 서바이벌)</div>
+            <div style="color:var(--neon-pink); font-weight:bold; margin-bottom:5px;">Step 3. 수박N (7~10월)</div>
+            <div class="sub-text">자작문항 N제 + 수능완성 + 킬러기출 (시대인재 전국 서바이벌 모의고사 병행)</div>
         </div>
         <div class="curri-item">
-            <b>Step 4. GRAND FINAL (10월~)</b>
-            <div class="sub-text">자작문항 실전 모의고사 10회 (시대인재 서바이벌)</div>
+            <div style="color:var(--neon-pink); font-weight:bold; margin-bottom:5px;">Step 4. GRAND FINAL (10월~)</div>
+            <div class="sub-text">실전 모의고사 10회 + 파이널 약점 보완</div>
         </div>
     </div>
 
-    <div class="glass-card" style="border-left-color: var(--neon-purple);">
-        <div class="card-title">✍️ 수리논술 (Essay)</div>
-        <div class="sub-text">
-            • <b>SEASON 1 (4개월)</b>: 단원별 맞춤 개념 학습<br>
-            • <b>SEASON 2 (2개월)</b>: 실전 문제풀이 & 서술 연습<br>
-            • <b>SEASON 3 (시험 전)</b>: 학교별 FINAL 기출 & 모의<br>
-            • <b>SEASON 4 (수능 후)</b>: 파이널 직전 대비
+    <div class="glass-card essay-special">
+        <div class="card-title">✍️ 수리논술 커리큘럼</div>
+        <div style="padding-top:10px;">
+            <div class="essay-step"><b>SEASON 1 (개강 후 4개월)</b> <span>단원별 맞춤 개념 학습</span></div>
+            <div class="essay-step"><b>SEASON 2 (2개월)</b> <span>실전 문제풀이 & 서술 연습</span></div>
+            <div class="essay-step"><b>SEASON 3 (수능 전)</b> <span>학교별 FINAL 기출 & 모의</span></div>
+            <div class="essay-step"><b>SEASON 4 (수능 후)</b> <span>대학별 파이널 직전 대비</span></div>
         </div>
     </div>
 </div>
 
 <div id="fame" class="container">
-    <h2 style="text-align:center; font-size:20px; color:var(--neon-pink);">HALL OF FAME</h2>
-    <p style="text-align:center; font-size:12px; color:#aaa; margin-bottom:20px;">RTM이 배출한 영광의 얼굴들</p>
+    <h2 style="text-align:center; font-size:24px; color:var(--neon-gold); text-shadow:0 0 10px rgba(255, 215, 0, 0.3);">HALL OF FAME</h2>
+    
+    <div class="glass-card">
+        <div class="card-title" style="border:none; margin-bottom:10px;">🏆 RTM Legacy (역대 배출)</div>
+        <p style="font-size:14px; color:#aaa; margin-top:-10px; margin-bottom:15px;">박원욱T와 함께 기적을 만든 대학들</p>
+        <div class="trophy-case">
+            <span class="univ-badge">서울대</span>
+            <span class="univ-badge">연세대</span>
+            <span class="univ-badge">고려대</span>
+            <span class="univ-badge">성균관대</span>
+            <span class="univ-badge">한양대</span>
+            <span class="univ-badge">중앙대</span>
+            <span class="univ-badge">경희대</span>
+            <span class="univ-badge">한국외대</span>
+            <span class="univ-badge">서울시립대</span>
+            <span class="univ-badge">건국대</span>
+            <span class="univ-badge">동국대</span>
+            <span class="univ-badge">홍익대</span>
+            <span class="univ-badge">인하대</span>
+            <li style="list-style:none; margin-top:10px; color:#888; font-size:14px;">* 이 밖에도 수많은 합격사례가 있습니다.</li>
+        </div>
+    </div>
 
     <div class="glass-card">
-        <div class="card-title">🏆 2026학년도 영광의 기록</div>
-        
+        <div class="card-title">🥇 2026학년도 영광의 기록</div>
         <div class="honor-row">
-            <span class="medal">🥇</span>
+            <span class="medal">🏆</span>
             <div>
                 <div class="student-info">고려대학교 합격</div>
-                <div class="achievement">정○빈 (포스코고3)</div>
+                <div class="achievement">정○○ (포스코고3)</div>
             </div>
         </div>
         <div class="honor-row">
             <span class="medal">🥈</span>
             <div>
-                <div class="student-info">성균관대, 한양대 동시 합격</div>
-                <div class="achievement">이○준 (하늘고3)</div>
+                <div class="student-info">성균관대 / 한양대 동시 합격</div>
+                <div class="achievement">이○○ (하늘고3)</div>
             </div>
         </div>
         <div class="honor-row">
             <span class="medal">🥉</span>
             <div>
                 <div class="student-info">중앙대학교 합격</div>
-                <div class="achievement">이○서 (검단고3)</div>
+                <div class="achievement">이○○ (검단고3)</div>
             </div>
         </div>
     </div>
 
     <div class="glass-card" style="border-left-color: var(--neon-green);">
         <div class="card-title">✨ 내신/모의고사 1등급 클럽</div>
-        <ul style="padding-left:15px; margin:0; font-size:13px; color:#ddd; line-height:1.8;">
-            <li><b>김○늘, 김○</b> : 입학 후 성적 40점대 상승 (내신/기하 1등급)</li>
-            <li><b>전○우</b> : 확통 내신 1등급 / 수능 미적분 1등급</li>
-            <li><b>이○</b> : 수능 미적분 1등급 달성</li>
-            <li><b>박○서</b> : 내신 1등급 / 수능 미적분 1등급</li>
-            <li><b>김○희</b> : 4개월 만에 모의고사 60점 → 92점</li>
-            <li style="list-style:none; margin-top:5px; color:#888;">* 이 밖에도 다수의 성적 향상 사례가 있습니다.</li>
+        <ul style="padding-left:15px; margin:0; font-size:15px; color:#ddd; line-height:1.9;">
+            <li><b>김○○, 김○</b> : 등록 이후 4개월만에 40점 상승 후 모든 내신 시험, 수능 1등급 쟁취</li>
+            <li><b>장○○</b> : 2학년 1학기 내신 1등급</li>
+            <li><b>한○○</b> : 2학년 1학기 내신 1등급</li>
+            <li><b>김○○</b> : 2학년 1학기 내신 중간고사 95점 </li>
+            <li><b>전○○</b> : 3학년 1학기 확통 내신 1등급, 수능 96점</li>
+            <li><b>양○○</b> : 3학년 1학기 확통 내신 1등급</li>
+            <li><b>이○</b> : 1, 2학년 2학기 내신 1등급, 수능 1등급</li>
+            <li><b>전○○</b> : 2학년 1, 2학기 확통 내신 1등급</li>
+            <li><b>박○○</b> : 1학년, 2학년 내신 1등급, 수능 1등급</li>
+            <li><b>이○○</b> : 1학년 1학기 내신 1등급</li>
+            <li><b>박○○</b> : 1학년 1학기 내신 1등급(중간고사 100점)</li>
+            <li><b>김○○</b> : 고3 7월 수능강의 수강 후 4달만에 92점까지 상승</li>
+            <li><b>정○○</b> : 3학년 1학기 확통, 미적 내신 1등급</li>
+            <li style="list-style:none; margin-top:10px; color:#888; font-size:14px;">* 이 밖에도 수많은 기적의 사례가 있습니다.</li>
         </ul>
     </div>
 </div>
 
 <div id="reviews" class="container">
-    <h2 style="text-align:center; font-size:20px;">SUCCESS STORIES</h2>
-    
-    <div class="glass-card" style="text-align:center; padding: 40px 20px;">
-        <div style="font-size:30px; margin-bottom:15px;">⏳</div>
-        <h3 style="margin:0; margin-bottom:15px; color:var(--neon-blue);">Coming Soon</h3>
-        <p style="font-size:14px; color:#ccc; line-height:1.6;">
+    <h2 style="text-align:center; font-size:22px;">SUCCESS STORIES</h2>
+    <div class="glass-card" style="text-align:center; padding: 50px 20px;">
+        <div style="font-size:40px; margin-bottom:20px;">⏳</div>
+        <h3 style="margin:0; margin-bottom:15px; color:var(--neon-blue); font-size:20px;">Review Update Soon</h3>
+        <p style="font-size:15px; color:#ccc; line-height:1.8;">
             현재 기적을 만들어낸 학생들의<br>
-            소중하고 생생한 후기를 모으고 있습니다.<br><br>
-            거짓 없는 진솔한 이야기로<br>
-            곧 찾아뵙겠습니다. 감사합니다.
+            소중하고 생생한 이야기를 모으고 있습니다.<br><br>
+            가장 진솔하고 뜨거운 후기들로<br>
+            곧 찾아뵙겠습니다.<br>
+            <span style="font-size:13px; color:#888; margin-top:10px; display:block;">(2026학년도 합격생 인터뷰 준비 중)</span>
         </p>
     </div>
 </div>
 
 <div id="archive" class="container">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-        <h2 style="font-size:20px; margin:0;">RTM ARCHIVE</h2>
-        <span style="font-size:11px; color:#aaa;">개념/예제/Q&A</span>
+        <h2 style="font-size:22px; margin:0;">RTM ARCHIVE</h2>
+        <span style="font-size:13px; color:#aaa;">개념/예제/Q&A</span>
     </div>
 
     <button class="btn-write" onclick="showWriteForm()">+</button>
@@ -316,46 +407,45 @@
     <div id="board-list-view" class="board-view active">
         <div class="glass-card" style="padding:0;">
             <div id="post-list-container">
-                <div style="padding:20px; text-align:center; color:#666; font-size:13px;">등록된 게시글이 없습니다.</div>
+                <div style="padding:30px; text-align:center; color:#666; font-size:14px;">등록된 게시글이 없습니다.</div>
             </div>
         </div>
     </div>
 
     <div id="board-write-view" class="board-view glass-card">
         <div class="card-title">✏️ 글쓰기 (Admin)</div>
-        <input type="password" id="admin-pw" class="input-dark" placeholder="관리자 비밀번호" style="margin-bottom:10px;">
-        <input type="text" id="write-title" class="input-dark" placeholder="제목을 입력하세요">
-        <input type="text" id="write-img" class="input-dark" placeholder="이미지 파일명(예: math.jpg) 또는 이미지 주소(URL)">
-        <p style="font-size:11px; color:#888; margin-top:-3px; margin-bottom:8px;">* 이미지는 깃허브 폴더에 파일을 같이 올리고 파일명을 적거나, 인터넷 주소를 적으세요.</p>
-        
-        <textarea id="write-content" class="input-dark" rows="10" placeholder="내용을 입력하세요 (개념 설명, 예제 등)"></textarea>
-        <div style="display:flex; gap:10px; margin-top:10px;">
-            <button class="btn-action" style="flex:1; margin:0; background:#333;" onclick="hideWriteForm()">취소</button>
-            <button class="btn-action" style="flex:1; margin:0;" onclick="savePost()">등록</button>
+        <input type="password" id="admin-pw" class="input-dark" placeholder="관리자 비밀번호">
+        <input type="text" id="write-title" class="input-dark" placeholder="제목">
+        <input type="text" id="write-img" class="input-dark" placeholder="이미지 주소 (URL) 또는 파일명">
+        <p style="font-size:12px; color:#888; margin-top:-5px; margin-bottom:10px;">* 이미지는 깃허브에 올린 파일명이나 이미지 주소를 입력하세요.</p>
+        <textarea id="write-content" class="input-dark" rows="10" placeholder="내용 입력"></textarea>
+        <div style="display:flex; gap:10px;">
+            <button class="btn-action" style="background:#333;" onclick="hideWriteForm()">취소</button>
+            <button class="btn-action" onclick="savePost()">등록</button>
         </div>
     </div>
 
     <div id="board-detail-view" class="board-view glass-card">
-        <button onclick="showBoardList()" style="background:none; border:none; color:#aaa; cursor:pointer; margin-bottom:10px;">← 목록으로</button>
-        <div id="detail-title" style="font-size:18px; font-weight:bold; color:var(--neon-blue); margin-bottom:10px;"></div>
-        <div id="detail-meta" style="font-size:11px; color:#666; margin-bottom:20px; border-bottom:1px solid #333; padding-bottom:10px;"></div>
+        <button onclick="showBoardList()" style="background:none; border:none; color:#aaa; cursor:pointer; margin-bottom:15px; font-size:14px;">← 목록으로</button>
+        <div id="detail-title" style="font-size:20px; font-weight:bold; color:var(--neon-blue); margin-bottom:10px;"></div>
+        <div id="detail-meta" style="font-size:13px; color:#888; margin-bottom:20px; border-bottom:1px solid #333; padding-bottom:10px;"></div>
         
-        <div id="detail-content" style="font-size:14px; line-height:1.6; color:#eee; min-height:50px; white-space: pre-wrap;"></div>
-        <div id="detail-image-area"></div>
+        <div id="detail-content" style="font-size:15px; line-height:1.7; color:#eee; min-height:50px; white-space: pre-wrap;"></div>
+        <div id="detail-image-area" style="text-align:center;"></div>
 
         <div class="comment-section">
-            <div style="font-size:13px; font-weight:bold; margin-bottom:10px;">💬 Comments</div>
+            <div style="font-size:15px; font-weight:bold; margin-bottom:15px;">💬 Comments</div>
             <div id="comment-list"></div>
             
             <div style="margin-top:15px; display:flex; gap:5px;">
-                <input type="text" id="comment-input" class="input-dark" placeholder="댓글 내용...">
-                <button class="btn-small" onclick="addComment()">등록</button>
+                <input type="text" id="comment-input" class="input-dark" placeholder="댓글 내용..." style="margin-bottom:0;">
+                <button class="btn-small" onclick="addComment()" style="height:45px;">등록</button>
             </div>
             
-            <div id="reply-box" style="display:none; margin-top:10px; padding:10px; background:#222; border-radius:5px;">
-                <div style="font-size:11px; color:var(--neon-blue); margin-bottom:5px;">↳ 답글 달기</div>
-                <input type="text" id="reply-name" class="input-dark" placeholder="이름 (예: 박원욱T, 익명)" style="margin-bottom:5px;">
-                <input type="text" id="reply-input" class="input-dark" placeholder="답글 내용">
+            <div id="reply-box" style="display:none; margin-top:10px; padding:15px; background:#222; border-radius:8px;">
+                <div style="font-size:13px; color:var(--neon-blue); margin-bottom:5px;">↳ 답글 달기</div>
+                <input type="text" id="reply-name" class="input-dark" placeholder="이름 (예: 박원욱T)" style="margin-bottom:5px;">
+                <input type="text" id="reply-input" class="input-dark" placeholder="내용">
                 <div style="display:flex; gap:5px;">
                     <button class="btn-small" onclick="submitReply()">등록</button>
                     <button class="btn-small" style="background:#444;" onclick="closeReplyBox()">취소</button>
@@ -366,8 +456,8 @@
 </div>
 
 <div id="classes" class="container">
-    <h2 style="text-align:center; font-size:20px;">ONGOING CLASSES</h2>
-    <p style="text-align:center; font-size:11px; color:#888; margin-bottom:20px;">* 2026. 01. 13. 기준 진도 현황</p>
+    <h2 style="text-align:center; font-size:22px;">ONGOING CLASSES</h2>
+    <p style="text-align:center; font-size:13px; color:#aaa; margin-bottom:20px;">* 2026. 01. 13. 기준 진도 현황</p>
 
     <div class="glass-card">
         <div class="card-title">1. 예비중2 CORE CLASS</div>
@@ -377,8 +467,8 @@
         </div>
         <div class="progress-box">
             <span class="progress-date">📌 Current Progress</span>
-            2-1 : 다항식의 연산<br>
-            2-2 : 이등변삼각형, 직각삼각형의 합동
+            2-1 : 일차부등식<br>
+            2-2 : 삼각형의 외심과 내심, 평행사변형
         </div>
     </div>
 
@@ -391,8 +481,8 @@
         </div>
         <div class="progress-box">
             <span class="progress-date">📌 Current Progress</span>
-            공통1 : 여러 가지 방정식 완결 → 부등식 예정<br>
-            공통2 : 평면좌표 진행중
+            공통1 : 일차부등식, 연립일차부등식<br>
+            공통2 : 직선의 방정식 
         </div>
     </div>
 
@@ -405,18 +495,22 @@
         </div>
         <div class="progress-box">
             <span class="progress-date">📌 Current Progress</span>
-            공통1 : 여러 가지 방정식 완결 → 부등식 예정<br>
-            공통2 : 평면좌표 진행중
+            공통1 : 이차방정식 개념완성<br>
+            공통2 : 직선의 방정식 
         </div>
     </div>
 
     <div class="glass-card">
         <div class="card-title">4. 기하 정규반 (예비고2)</div>
         <div class="sub-text">• 매주 금요일 10시 ~ 13시</div>
+        <div class="progress-box">
+            <span class="progress-date">📌 Current Progress</span>
+            이차곡선 완료 후 공간도형 개념 완성 
+        </div>
     </div>
 
     <div class="glass-card" style="border-left-color: #555;">
-        <div class="card-title">5. 수능수학 1등급 목표반</div>
+        <div class="card-title">5. 수능수학 1등급 목표반(개강 예정)</div>
         <div class="sub-text">
             • 매주 금요일 14시 ~ 17시 30분<br>
             • 대상: 1등급/만점 목표 학생
@@ -424,7 +518,7 @@
     </div>
 
     <div class="glass-card" style="border-left-color: #555;">
-        <div class="card-title">6. 수리논술 정규반</div>
+        <div class="card-title">6. 수리논술 정규반(개강 예정)</div>
         <div class="sub-text">
             • 매주 토요일 19시 ~ 22시 30분<br>
             • 대상: 논술 전형 희망자
@@ -433,11 +527,14 @@
 </div>
 
 <div id="report" class="container">
-    <div id="login-box" class="glass-card" style="text-align:center;">
-        <h3>📊 주간 학습 보고서</h3>
-        <p style="font-size:12px; color:#aaa; margin-bottom:15px;">학생 이름과 비밀번호(뒷자리)를 입력하세요.</p>
+    <div id="login-box" class="login-card">
+        <div class="login-logo-container">
+            <img src="2-1.png" alt="RTM Logo" class="login-logo">
+        </div>
+        <div class="login-header">주간 리포트 조회</div>
+        <p class="login-desc">학생 이름과 비밀번호를 입력하세요.</p>
 
-        <select id="studentSelect" class="login-input">
+        <select id="studentSelect" class="login-input-field">
             <option value="">학생 선택</option>
             <optgroup label="[예비중2]">
                 <option value="강규온">강규온</option><option value="김강인">김강인</option>
@@ -453,27 +550,27 @@
             </optgroup>
         </select>
         
-        <input type="password" id="pwInput" class="login-input" placeholder="비밀번호 4자리">
-        <button class="btn-action" onclick="checkReport()">리포트 확인</button>
+        <input type="password" id="pwInput" class="login-input-field" placeholder="비밀번호 4자리">
+        <button class="btn-hot-pink" onclick="checkReport()">리포트 확인</button>
     </div>
 
     <div id="report-result" class="glass-card" style="display:none;">
-        <div style="border-bottom:1px solid #444; padding-bottom:10px; margin-bottom:15px; display:flex; justify-content:space-between; align-items:end;">
+        <div style="border-bottom:1px solid #444; padding-bottom:15px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:end;">
             <div>
-                <span style="font-size:12px; color:var(--neon-pink);">WEEKLY REPORT</span><br>
-                <span style="font-size:22px; font-weight:bold;" id="rName">학생이름</span>
+                <span style="font-size:13px; color:var(--neon-pink); font-weight:bold;">WEEKLY REPORT</span><br>
+                <span style="font-size:24px; font-weight:bold;" id="rName">학생이름</span>
             </div>
-            <div style="font-size:11px; color:#888;">
+            <div style="font-size:13px; color:#aaa; text-align:right;">
                 DATE: <span id="rDate">2026.01.20</span><br>
                 TEACHER: 박원욱T
             </div>
         </div>
         <div id="report-content"></div>
-        <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px; margin-top:20px;">
-            <div style="font-size:13px; font-weight:bold; color:var(--neon-blue); margin-bottom:10px;">💬 Teacher's Comment</div>
-            <p style="font-size:13px; line-height:1.6; margin:0; white-space: pre-wrap; color:#ddd;" id="rComment"></p>
+        <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:10px; margin-top:25px;">
+            <div style="font-size:15px; font-weight:bold; color:var(--neon-blue); margin-bottom:10px;">💬 Teacher's Comment</div>
+            <p style="font-size:15px; line-height:1.7; margin:0; white-space: pre-wrap; color:#ddd;" id="rComment"></p>
         </div>
-        <button class="btn-action" style="background:#333; margin-top:15px;" onclick="location.reload()">로그아웃</button>
+        <button class="btn-action" style="background:#333; margin-top:20px;" onclick="location.reload()">로그아웃</button>
     </div>
 </div>
 
@@ -494,7 +591,7 @@
     }
 
     // --- 게시판 로직 ---
-    let posts = []; 
+    let posts = [];
     let currentPostId = null;
     let replyTargetIndex = null;
 
@@ -503,7 +600,7 @@
         container.innerHTML = "";
         
         if(posts.length === 0) {
-            container.innerHTML = '<div style="padding:20px; text-align:center; color:#666; font-size:13px;">등록된 게시글이 없습니다.</div>';
+            container.innerHTML = '<div style="padding:30px; text-align:center; color:#888; font-size:14px;">등록된 게시글이 없습니다.</div>';
             return;
         }
 
@@ -516,7 +613,7 @@
                     <div class="post-title">${post.title}</div>
                     <div class="post-meta">${post.date} | 박원욱T | 댓글 ${post.comments.length}</div>
                 </div>
-                <div style="color:#666;">></div>
+                <div style="color:#666; font-size:20px;">></div>
             `;
             container.prepend(div); 
         });
@@ -561,7 +658,6 @@
         renderPosts();
         hideWriteForm();
         
-        // 초기화
         document.getElementById('write-title').value = "";
         document.getElementById('write-img').value = "";
         document.getElementById('write-content').value = "";
@@ -604,12 +700,12 @@
             let repliesHtml = "";
             if(c.replies && c.replies.length > 0) {
                 c.replies.forEach(r => {
-                    repliesHtml += `<div class="reply-item"><span class="reply-badge">↳</span><b style="color:#aaa; font-size:11px; margin-right:5px;">${r.name}</b>${r.text}</div>`;
+                    repliesHtml += `<div class="reply-item"><span class="reply-badge">↳</span><b style="color:#ddd; margin-right:5px;">${r.name}</b>${r.text}</div>`;
                 });
             }
 
             div.innerHTML = `
-                <div class="comment-user">${c.user} <span style="cursor:pointer; color:var(--neon-blue); margin-left:5px;" onclick="openReplyBox(${index})">↲답글</span></div>
+                <div class="comment-user">${c.user} <span style="cursor:pointer; color:var(--neon-blue); margin-left:8px; font-size:12px;" onclick="openReplyBox(${index})">↲답글</span></div>
                 <div class="comment-text">${c.text}</div>
                 ${repliesHtml}
             `;
@@ -628,10 +724,9 @@
     }
 
     function openReplyBox(index) {
-        // 비밀번호 확인 삭제 (바로 열림)
         replyTargetIndex = index;
         document.getElementById('reply-box').style.display = 'block';
-        document.getElementById('reply-name').value = "박원욱T"; // 기본값
+        document.getElementById('reply-name').value = "박원욱T"; 
         document.getElementById('reply-input').focus();
     }
 
@@ -655,7 +750,7 @@
 
     renderPosts();
 
-    // --- 리포트 데이터베이스 (기존 내용 유지) ---
+    // --- 리포트 데이터베이스 (기존 데이터 유지) ---
     const studentDB = {
         "강규온": { "pw": "0585", "date": "2026. 01. 13.", "att": "정상 출석", "attd": "보통", "progTitle": "2-1 : 일차부등식 들어갈 차례 / 2-2 : 직각삼각형의 닮음", "progLevel": "상", "hwRate": "0%", "hwCmt": "거의 안합니다...", "testScore": "15/30", "testAnal": "분석 내용", "mainCmt": "강규온 학생은 2-1 식의 계산 과정에서 계산 실수가 조금 잦습니다. 그러나 아이에게 아직 배우려는 태도가 없는 것이 좀 아쉽습니다. 조금 더 기다려주면 믿음에 부응해줄거라 생각합니다. \n\n계산 실수가 잦은 이유는 과제를 하지 않는 것이 문제입니다. 저도 입에 닳도록 과제를 해 오라고 하는 중이고, 같은 반 친구들은 다 과제를 해 오는데 본인만 안해오면 다른 아이들이 규온이만 혜택을 받는다고 생각할 수도 있습니다.  \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다. " },
         "김강인": { "pw": "0989", "date": "2026. 01. 13.", "att": "정상 출석", "attd": "좋음", "progTitle": "2-1 : 일차부등식 들어갈 차례 / 2-2 : 직각삼각형의 닮음", "progLevel": "중상", "hwRate": "70%", "hwCmt": "양은 전부 채웠지만 이해가 안 되는 부분이 더러 있었음.", "testScore": "23/30", "testAnal": "전반적으로 이해력은 좋음. 고급 계산력 요망.", "mainCmt": "김강인 학생은 2-1 식의 계산 과정에서 복잡한 계산을 어려워합니다. 그러나 아이가 지식을 흡수하려는 태도가 아주 좋습니다. 계속 할 수 있다고 하면 알아서 잘 따라오더라고요. 그것이 지난 학기때 85점에서 95점으로 오른 이유이기도 합니다.\n\n과제를 아주 잘 이행하고 있습니다만, 어려워 하는 부분들이 있어서 그것을 집중적으로 공략해주면 거의 대부분의 문제를 본인의 힘으로 풀어낼 힘이 생길 것입니다.\n\n다만, 우려스러운 부분은 또래집단에서 게임을 좀 진심으로 한다는 점인데, 보통 팀 대전게임이 주를 이룹니다. 그래서 본인의 팀이 지게 되면 패배의 원흉이 된 친구들을 비난하는 것이 있는데, 이는 성격형성에 지대한 영향을 끼칩니다. 교육하실때, 너무 다그치지는 마시고 혹시 그런일이 있었냐면서 그러지 마라. 정도로 말려주십쇼.  \n\n앞으로도 계속 열심히 지도할 테니, 믿고 맡겨주시면 감사하겠습니다. " },
@@ -692,9 +787,9 @@
             <table class="report-table">
                 <tr><th>① 출결</th><td>${data.att}</td></tr>
                 <tr><th>② 태도</th><td>${data.attd}</td></tr>
-                <tr><th>③ 진도</th><td>${data.progTitle}<br><span style="font-size:11px; color:#aaa">(이해도: ${data.progLevel})</span></td></tr>
-                <tr><th>④ 숙제</th><td><span style="color:var(--neon-pink)">${data.hwRate}</span><br><span style="font-size:11px; color:#aaa">${data.hwCmt}</span></td></tr>
-                <tr><th>⑤ 테스트</th><td><span class="score-box">${data.testScore}</span><br><span style="font-size:11px; color:#aaa">${data.testAnal}</span></td></tr>
+                <tr><th>③ 진도</th><td>${data.progTitle}<br><span style="font-size:13px; color:#aaa">(이해도: ${data.progLevel})</span></td></tr>
+                <tr><th>④ 숙제</th><td><span style="color:var(--neon-pink)">${data.hwRate}</span><br><span style="font-size:13px; color:#aaa">${data.hwCmt}</span></td></tr>
+                <tr><th>⑤ 테스트</th><td><span class="score-box">${data.testScore}</span><br><span style="font-size:13px; color:#aaa">${data.testAnal}</span></td></tr>
             </table>
             `;
             
